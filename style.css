@@ -1262,7 +1262,9 @@ input {
   .hero__visual {
     min-height: 440px;
     border-radius: 26px;
-    background-position: right center;
+    background:
+      linear-gradient(90deg, rgba(248, 245, 239, 0.04) 0%, rgba(248, 245, 239, 0.1) 12%, rgba(248, 245, 239, 0.18) 26%, rgba(248, 245, 239, 0.02) 100%),
+      url("images/home/ChatGPT Image Apr 24, 2026, 07_52_22 PM.png") center center / cover no-repeat;
   }
 
   .about__media {
