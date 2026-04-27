@@ -16,12 +16,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body class="is-loading">
+    <div class="loading-screen" id="loading-screen" aria-live="polite">
+      <div class="loading-screen__backdrop" aria-hidden="true">
+        <span class="loading-screen__glow loading-screen__glow--gold"></span>
+        <span class="loading-screen__glow loading-screen__glow--blue"></span>
+        <span class="loading-screen__grid"></span>
+      </div>
+      <div class="loading-screen__label">Sarvesh Mopkar</div>
+      <div class="loading-screen__center">
+        <span class="loading-screen__word" id="loading-word">Wealth</span>
+      </div>
+      <div class="loading-screen__counter" id="loading-counter">000</div>
+      <div class="loading-screen__progress">
+        <div class="loading-screen__progress-fill" id="loading-progress"></div>
+      </div>
+    </div>
     <div class="page-shell">
       <header class="site-header" id="top">
         <div class="container site-header__inner">
@@ -209,12 +224,9 @@
               />
               <div class="feature-banner__content">
                 <p class="eyebrow">SIGNATURE WORK</p>
-                <h2>Kuber Consciousness</h2>
+                <h2><span class="gold-text">Kuber</span> Consciousness</h2>
                 <p>
-                  A space where abundance is not chased<br />
-                  - but activated, stabilised, and expanded.<br />
-                  This is for those who are ready to move<br />
-                  beyond earning and step into holding.
+                  A space where abundance is not chased - but activated, stabilised, and expanded. This is for those who are ready to move beyond earning and step into holding.
                 </p>
               </div>
               <div class="feature-banner__action">
@@ -253,8 +265,11 @@
           </div>
         </section>
 
-        <section class="philosophy section" id="philosophy">
+        <section class="philosophy section section--services" id="philosophy">
           <div class="container">
+            <div class="section-head section-head--services reveal">
+              <h2>PHILOSOPHY</h2>
+            </div>
             <div class="philosophy__grid reveal">
               <div class="philosophy__item">
                 <div class="philosophy__icon">
@@ -388,13 +403,203 @@
           <div class="container final-cta__inner reveal">
             <p>
               If you are ready for a different relationship with
-              wealth&mdash;<br />
-              one that is grounded, powerful, and sustainable&mdash;
+              wealth<br />
+              one that is grounded, powerful, and sustainable
             </p>
             <a class="btn btn--primary" href="#top">
               <span>STEP IN</span>
               <span class="btn__arrow">→</span>
             </a>
+          </div>
+        </section>
+
+        <section class="section testimonials" id="testimonials">
+          <div class="container">
+            <div class="section-head reveal">
+              <p class="eyebrow eyebrow--center">VOICES FROM THE WORK</p>
+              <h2>Testimonials</h2>
+              <p class="testimonials__intro">
+                The shift is not just in results. It is in clarity, self-trust,
+                emotional steadiness, and the way people begin to hold power.
+              </p>
+            </div>
+
+            <div class="testimonials__slider reveal" aria-label="Testimonials slider">
+              <div class="testimonials__controls">
+                <button class="testimonials__arrow" type="button" data-testimonial-prev aria-label="Previous testimonial">
+                  <span aria-hidden="true">&larr;</span>
+                </button>
+                <div class="testimonials__dots" aria-label="Testimonial navigation">
+                  <button class="testimonials__dot is-active" type="button" data-testimonial-dot="0" aria-label="Go to testimonial 1"></button>
+                  <button class="testimonials__dot" type="button" data-testimonial-dot="1" aria-label="Go to testimonial 2"></button>
+                  <button class="testimonials__dot" type="button" data-testimonial-dot="2" aria-label="Go to testimonial 3"></button>
+                  <button class="testimonials__dot" type="button" data-testimonial-dot="3" aria-label="Go to testimonial 4"></button>
+                  <button class="testimonials__dot" type="button" data-testimonial-dot="4" aria-label="Go to testimonial 5"></button>
+                  <button class="testimonials__dot" type="button" data-testimonial-dot="5" aria-label="Go to testimonial 6"></button>
+                </div>
+                <button class="testimonials__arrow" type="button" data-testimonial-next aria-label="Next testimonial">
+                  <span aria-hidden="true">&rarr;</span>
+                </button>
+              </div>
+
+              <div class="testimonials__viewport">
+                <div class="testimonials__rail" data-testimonials-rail>
+                  <article class="testimonial-card">
+                    <div class="testimonial-card__top">
+                      <span class="testimonial-card__quote" aria-hidden="true">"</span>
+                      <span class="testimonial-card__tag">Kuber Consciousness</span>
+                    </div>
+                    <p class="testimonial-card__text">
+                      I came in looking for money expansion, but what changed first
+                      was my nervous system. I stopped chasing, started holding, and
+                      my decisions became cleaner.
+                    </p>
+                    <div class="testimonial-card__meta">
+                      <strong>Rhea S.</strong>
+                      <span>Founder</span>
+                    </div>
+                  </article>
+
+                  <article class="testimonial-card testimonial-card--featured">
+                    <div class="testimonial-card__top">
+                      <span class="testimonial-card__quote" aria-hidden="true">"</span>
+                      <span class="testimonial-card__tag">Trader Mentorship</span>
+                    </div>
+                    <p class="testimonial-card__text">
+                      The biggest shift was emotional neutrality. My entries became
+                      disciplined, my exits became intentional, and I finally felt
+                      like I was trading from structure instead of reaction.
+                    </p>
+                    <div class="testimonial-card__meta">
+                      <strong>Aditya M.</strong>
+                      <span>Full-Time Trader</span>
+                    </div>
+                  </article>
+
+                  <article class="testimonial-card">
+                    <div class="testimonial-card__top">
+                      <span class="testimonial-card__quote" aria-hidden="true">"</span>
+                      <span class="testimonial-card__tag">1:1 Deep Work</span>
+                    </div>
+                    <p class="testimonial-card__text">
+                      These sessions gave language to patterns I had felt for years.
+                      There was depth, precision, and a kind of honesty that moved
+                      me into action very quickly.
+                    </p>
+                    <div class="testimonial-card__meta">
+                      <strong>Neha K.</strong>
+                      <span>Creative Entrepreneur</span>
+                    </div>
+                  </article>
+
+                  <article class="testimonial-card">
+                    <div class="testimonial-card__top">
+                      <span class="testimonial-card__quote" aria-hidden="true">"</span>
+                      <span class="testimonial-card__tag">Wealth Expansion</span>
+                    </div>
+                    <p class="testimonial-card__text">
+                      For the first time, money stopped feeling heavy. I felt more
+                      available to receive, more grounded while holding, and far
+                      less reactive in both business and life.
+                    </p>
+                    <div class="testimonial-card__meta">
+                      <strong>Simran P.</strong>
+                      <span>Business Owner</span>
+                    </div>
+                  </article>
+
+                  <article class="testimonial-card">
+                    <div class="testimonial-card__top">
+                      <span class="testimonial-card__quote" aria-hidden="true">"</span>
+                      <span class="testimonial-card__tag">Inner Alignment</span>
+                    </div>
+                    <p class="testimonial-card__text">
+                      There was elegance in the way the work unfolded. Every session
+                      brought clarity, regulation, and a stronger sense of trust in
+                      my own timing and decisions.
+                    </p>
+                    <div class="testimonial-card__meta">
+                      <strong>Ishita R.</strong>
+                      <span>Consultant</span>
+                    </div>
+                  </article>
+
+                  <article class="testimonial-card">
+                    <div class="testimonial-card__top">
+                      <span class="testimonial-card__quote" aria-hidden="true">"</span>
+                      <span class="testimonial-card__tag">Trading Psychology</span>
+                    </div>
+                    <p class="testimonial-card__text">
+                      My biggest gain was not just profit. It was calm. I now wait,
+                      execute, and manage risk with far more discipline than ever
+                      before.
+                    </p>
+                    <div class="testimonial-card__meta">
+                      <strong>Karan V.</strong>
+                      <span>Swing Trader</span>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonials__stats reveal" aria-label="Client impact highlights">
+              <div class="testimonial-stat">
+                <strong>Deep</strong>
+                <span>identity-led transformation work</span>
+              </div>
+              <div class="testimonial-stat">
+                <strong>Clear</strong>
+                <span>strategy, energy, and inner alignment</span>
+              </div>
+              <div class="testimonial-stat">
+                <strong>Premium</strong>
+                <span>private support for serious personal shifts</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section faq" id="faq">
+          <div class="container">
+            <div class="section-head reveal">
+              <p class="eyebrow eyebrow--center">CLARITY BEFORE YOU STEP IN</p>
+              <h2>FAQ</h2>
+              <p class="faq__intro">
+                A few clear answers for the work, the process, and what to expect
+                before you begin.
+              </p>
+            </div>
+            <div class="faq__list">
+              <details class="faq__item">
+                <summary>
+                  <span class="faq__question">What is Kuber Consciousness?</span>
+                  <span class="faq__icon" aria-hidden="true"></span>
+                </summary>
+                <p>Kuber Consciousness is a signature program that helps you transform your relationship with money, abundance, and wealth through conscious alignment and energetic practices.</p>
+              </details>
+              <details class="faq__item">
+                <summary>
+                  <span class="faq__question">Who is this program for?</span>
+                  <span class="faq__icon" aria-hidden="true"></span>
+                </summary>
+                <p>This program is for individuals who are ready to move beyond earning and step into holding wealth sustainably.</p>
+              </details>
+              <details class="faq__item">
+                <summary>
+                  <span class="faq__question">How does the Millionaire Trader Mentorship work?</span>
+                  <span class="faq__icon" aria-hidden="true"></span>
+                </summary>
+                <p>It focuses on trading psychology, risk discipline, emotional neutrality, and structured decision-making for consistent results.</p>
+              </details>
+              <details class="faq__item">
+                <summary>
+                  <span class="faq__question">What is 1:1 Deep Work?</span>
+                  <span class="faq__icon" aria-hidden="true"></span>
+                </summary>
+                <p>Private high-level sessions for accelerated transformation and identity shifts with clear strategy alignment.</p>
+              </details>
+            </div>
           </div>
         </section>
       </main>
