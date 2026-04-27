@@ -94,10 +94,9 @@ input {
   position: sticky;
   top: 0;
   z-index: 50;
-  backdrop-filter: blur(16px);
   transition: box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
-  border-bottom: 1px solid transparent;
-  background: rgba(248, 245, 239, 0.72);
+  border-bottom: 1px solid rgba(188, 152, 72, 0.12);
+  background: #f8f5ef;
 }
 
 .site-header.is-scrolled {
@@ -123,6 +122,7 @@ input {
   width: 104px;
   height: 104px;
   object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.06));
 }
 
 .footer__brand .brand__mark {
@@ -1201,6 +1201,10 @@ input {
     display: none;
   }
 
+  .site-header {
+    background: #f8f5ef;
+  }
+
   .nav-toggle {
     display: inline-flex;
     margin-left: auto;
@@ -1298,16 +1302,33 @@ input {
 
   .pillars__grid,
   .services__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .pillar-card {
     grid-template-columns: 1fr;
     min-height: 0;
+    border-radius: 14px;
   }
 
   .pillar-card__image {
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 16 / 9;
+    max-height: 180px;
+  }
+
+  .pillar-card__body {
+    padding: 1.1rem 1rem 1rem;
+  }
+
+  .pillar-card__icon-wrap {
+    width: 52px;
+    height: 52px;
+  }
+
+  .pillar-card__icon-wrap img {
+    width: 26px;
+    height: 26px;
   }
 
   .services__ornament {
@@ -1333,14 +1354,29 @@ input {
     min-height: 72px;
   }
 
+  .section-head {
+    text-align: center;
+    padding: 0.8rem 0;
+  }
+
+  .section-head--pillars h2 {
+    font-size: clamp(1.5rem, 6vw, 1.9rem);
+  }
+
+  .section-head--pillars::after {
+    margin: 0.35rem auto 0;
+  }
+
   .brand__mark {
-    width: 64px;
-    height: 64px;
+    width: 80px;
+    height: 80px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
   }
 
   .footer__brand .brand__mark {
-    width: 64px;
-    height: 64px;
+    width: 80px;
+    height: 80px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
   }
 
   .brand__text {
@@ -1385,16 +1421,6 @@ input {
   .value-strip__item:last-of-type {
     grid-column: auto;
     max-width: 100%;
-  }
-
-  .pillars__grid,
-  .services__grid {
-    grid-template-columns: 1fr;
-    gap: 0.85rem;
-  }
-
-  .pillar-card__body {
-    padding: 1rem 0.95rem 0.95rem;
   }
 
   .feature-banner__card {
