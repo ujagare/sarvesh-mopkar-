@@ -159,7 +159,15 @@ navLinks.forEach((link) => {
   link.addEventListener("click", (event) => {
     const href = link.getAttribute("href");
 
-    if (href?.startsWith("#") && lenis) {
+    if (!href?.startsWith("#")) {
+      if (siteNav?.classList.contains("is-open")) {
+        siteNav.classList.remove("is-open");
+        navToggle?.setAttribute("aria-expanded", "false");
+      }
+      return;
+    }
+
+    if (lenis) {
       event.preventDefault();
       const target = document.querySelector(href);
       if (target) {
