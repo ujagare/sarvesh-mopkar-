@@ -7,9 +7,10 @@ const wordIntervalMs = 900;
 const progressDurationMs = 2700;
 const loaderExitDurationMs = 600;
 const loaderCompleteDelayMs = 400;
+const isHomePage = !document.body.classList.contains("about-page");
 
 function runLoadingScreen() {
-  if (!loadingScreen || !loadingWord || !loadingCounter || !loadingProgress) {
+  if (!isHomePage || !loadingScreen || !loadingWord || !loadingCounter || !loadingProgress) {
     document.body.classList.add("is-loaded");
     document.body.classList.remove("is-loading");
     return;
@@ -17,8 +18,6 @@ function runLoadingScreen() {
 
   let wordIndex = 0;
   let rafId = 0;
-  let completeTimeoutId = 0;
-  let pageRevealTimeoutId = 0;
   let wordIntervalId = 0;
   let isCompleted = false;
 
@@ -46,9 +45,10 @@ function runLoadingScreen() {
   const completeLoader = () => {
     if (isCompleted) return;
     isCompleted = true;
-    wordIntervalId && window.clearInterval(wordIntervalId);
+    if (wordIntervalId) window.clearInterval(wordIntervalId);
+    
     loadingScreen.classList.add("is-exiting");
-    pageRevealTimeoutId = window.setTimeout(() => {
+    window.setTimeout(() => {
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
       document.body.classList.add("is-loaded");
       document.body.classList.remove("is-loading");
@@ -65,9 +65,6 @@ function runLoadingScreen() {
     }
     wordIndex += 1;
     transitionWord(loadingWords[wordIndex]);
-    if (wordIndex === loadingWords.length - 1) {
-      window.clearInterval(wordIntervalId);
-    }
   }, wordIntervalMs);
 
   const startedAt = performance.now();
@@ -87,7 +84,7 @@ function runLoadingScreen() {
 
     loadingCounter.textContent = "100";
     loadingProgress.style.transform = "scaleX(1)";
-    completeTimeoutId = window.setTimeout(completeLoader, loaderCompleteDelayMs);
+    window.setTimeout(completeLoader, loaderCompleteDelayMs);
   };
 
   rafId = requestAnimationFrame(tick);
@@ -96,8 +93,6 @@ function runLoadingScreen() {
     "pagehide",
     () => {
       cancelAnimationFrame(rafId);
-      window.clearTimeout(completeTimeoutId);
-      window.clearTimeout(pageRevealTimeoutId);
       window.clearInterval(wordIntervalId);
     },
     { once: true }
@@ -106,41 +101,12 @@ function runLoadingScreen() {
 
 runLoadingScreen();
 
-const videoHero = document.getElementById("cinematic-video");
-const FADE_DURATION = 0.5;
-function handleVideoLoop() {
-  if (!videoHero) return;
-  const updateOpacity = () => {
-    if (!videoHero.duration) return requestAnimationFrame(updateOpacity);
-    const { currentTime, duration } = videoHero;
-    const fadeInEnd = FADE_DURATION;
-    const fadeOutStart = duration - FADE_DURATION;
-    if (currentTime < fadeInEnd) {
-      videoHero.style.opacity = String(currentTime / fadeInEnd);
-    } else if (currentTime > fadeOutStart) {
-      videoHero.style.opacity = String(1 - (currentTime - fadeOutStart) / FADE_DURATION);
-    } else {
-      videoHero.style.opacity = "1";
-    }
-    requestAnimationFrame(updateOpacity);
-  };
-  videoHero.addEventListener("ended", () => {
-    videoHero.style.opacity = "0";
-    setTimeout(() => {
-      videoHero.currentTime = 0;
-      videoHero.play();
-    }, 100);
-  });
-  videoHero.play();
-  requestAnimationFrame(updateOpacity);
-}
-if (videoHero) handleVideoLoop();
-
 const header = document.querySelector(".site-header");
 const navToggle = document.querySelector(".nav-toggle");
 const siteNav = document.querySelector(".site-nav");
 const navLinks = document.querySelectorAll(".site-nav__link, .footer__column a, .text-link, .btn, .brand");
 const revealItems = document.querySelectorAll(".reveal");
+
 function setHeaderState() {
   if (window.scrollY > 12) {
     header.classList.add("is-scrolled");
@@ -201,7 +167,7 @@ navLinks.forEach((link) => {
       }
     }
 
-    if (siteNav.classList.contains("is-open")) {
+    if (siteNav?.classList.contains("is-open")) {
       siteNav.classList.remove("is-open");
       navToggle?.setAttribute("aria-expanded", "false");
     }
