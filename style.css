@@ -419,7 +419,7 @@ body.is-loaded .page-shell {
   padding-top: clamp(0.5rem, 2vw, 1rem);
   padding-bottom: clamp(0.5rem, 2vw, 1.5rem);
   overflow: hidden;
-  background: #ffffff;
+  background: url("images/home/87ce2f67-3771-49a1-b721-64fa18edbd4f.png") center / cover no-repeat;
 }
 
 .hero__glow {
