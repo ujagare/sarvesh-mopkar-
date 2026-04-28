@@ -416,8 +416,7 @@ body.is-loaded .page-shell {
   min-height: min(90vh, 740px);
   display: grid;
   align-items: center;
-  padding-top: clamp(0.5rem, 2vw, 1rem);
-  padding-bottom: clamp(0.5rem, 2vw, 1.5rem);
+  padding: clamp(0.5rem, 2vw, 1rem) clamp(1rem, 4vw, 4rem) clamp(0.5rem, 2vw, 1.5rem) clamp(1rem, 2vw, 2rem);
   overflow: hidden;
   background: url("images/home/87ce2f67-3771-49a1-b721-64fa18edbd4f.png") center / cover no-repeat;
 }
@@ -429,9 +428,8 @@ body.is-loaded .page-shell {
 .hero__inner {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
-  gap: 1rem;
-  align-items: center;
+  grid-template-columns: 1fr;
+  justify-items: start;
 }
 
 .hero__visual {
@@ -453,7 +451,9 @@ body.is-loaded .page-shell {
   position: relative;
   z-index: 2;
   max-width: 760px;
-  padding: clamp(0.5rem, 1vw, 1rem) 0;
+  text-align: left;
+  justify-self: start;
+  padding: 0;
 }
 
 .eyebrow {
@@ -485,6 +485,7 @@ body.is-loaded .page-shell {
   color: var(--text);
   font-style: normal;
   white-space: nowrap;
+  text-align: left;
 }
 
 .hero__line span {
