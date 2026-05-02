@@ -445,7 +445,6 @@ body.is-loaded .page-shell {
 .hero__visual::after {
   display: none;
 }
-}
 
 .hero__content {
   position: relative;
