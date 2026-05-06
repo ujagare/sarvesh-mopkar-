@@ -197,7 +197,9 @@ const sectionObserver = new IntersectionObserver(
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
       navAnchors.forEach((anchor) => {
-        anchor.classList.toggle("is-active", anchor.getAttribute("href") === `#${entry.target.id}`);
+        const href = anchor.getAttribute("href");
+        if (!href?.startsWith("#")) return;
+        anchor.classList.toggle("is-active", href === `#${entry.target.id}`);
       });
     });
   },
