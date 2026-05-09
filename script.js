@@ -275,3 +275,68 @@ function setupTestimonialsSlider() {
 }
 
 setupTestimonialsSlider();
+
+function setupContactForm() {
+  const form = document.querySelector("[data-contact-form]");
+  if (!form) return;
+
+  const status = form.querySelector("[data-contact-status]");
+  const submitButton = form.querySelector('button[type="submit"]');
+  const buttonLabel = submitButton?.querySelector("span:first-child");
+  const defaultButtonText = buttonLabel?.textContent || "Send Message";
+
+  const setStatus = (message, type) => {
+    if (!status) return;
+    status.textContent = message;
+    status.dataset.state = type;
+  };
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const formData = new FormData(form);
+    const payload = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      subject: formData.get("subject"),
+      message: formData.get("message"),
+      company: formData.get("company"),
+      terms: formData.get("terms") === "on",
+    };
+
+    if (submitButton) submitButton.disabled = true;
+    if (buttonLabel) buttonLabel.textContent = "Sending...";
+    setStatus("Sending your message...", "pending");
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(result.message || "Something went wrong. Please try again.");
+      }
+
+      form.reset();
+      setStatus(result.message || "Thank you. Your message has been sent successfully.", "success");
+    } catch (error) {
+      setStatus(error.message || "Could not send your message. Please try again.", "error");
+    } finally {
+      if (submitButton) submitButton.disabled = false;
+      if (buttonLabel) buttonLabel.textContent = defaultButtonText;
+    }
+  });
+}
+
+setupContactForm();

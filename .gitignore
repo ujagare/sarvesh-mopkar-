@@ -1,6 +1,9 @@
 .vscode/
+.vercel/
+.env
+.env.local
 ai-test/
 images_backup/
 images/*_backup/
 *.bak
-
+*.bak2

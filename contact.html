@@ -3,6 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-TPM547S9');
+    </script>
+    <!-- End Google Tag Manager -->
     <title>Contact | Sarvesh Mopkar</title>
     <meta
       name="description"
@@ -20,6 +29,13 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4GW23EDRQK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4GW23EDRQK');
+    </script>
   <script type="application/ld+json">
 [
   {
@@ -44,19 +60,23 @@
 
   <!-- Open Graph -->
   <meta property="og:type"        content="website">
-  <meta property="og:url"         content="https://ujagare.github.io/sarvesh-mopkar-/contact.html">
+  <meta property="og:url" content="https://www.sarveshmopkar.co/contact.html" />
   <meta property="og:title"       content="Contact Sarvesh Mopkar | Spiritual Finance Coach">
   <meta property="og:description" content="Ready to begin? Contact Sarvesh Mopkar for Kuber Consciousness, Trader Mentorship and 1:1 Deep Work sessions.">
-  <meta property="og:image"       content="images/home/sarvesh-mopkar-logo.webp">
+  <meta property="og:image" content="https://www.sarveshmopkar.co/images/home/sarvesh-mopkar-logo.webp" />
   <meta property="og:site_name"   content="Sarvesh Mopkar">
   <meta property="og:locale"      content="en_IN">
   <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:title"       content="Contact Sarvesh Mopkar | Spiritual Finance Coach">
   <meta name="twitter:description" content="Ready to begin? Contact Sarvesh Mopkar for Kuber Consciousness, Trader Mentorship and 1:1 Deep Work sessions.">
-  <meta name="twitter:image"       content="images/home/sarvesh-mopkar-logo.webp">
-</head>
+  <meta name="twitter:image" content="https://www.sarveshmopkar.co/images/home/sarvesh-mopkar-logo.webp" />
+  <link rel="canonical" href="https://www.sarveshmopkar.co/contact.html" />
+  </head>
   <body class="contact-page">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TPM547S9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div class="page-shell">
       <header class="site-header" id="top">
         <div class="container site-header__inner">
@@ -162,15 +182,15 @@
                 <span class="contact-rule"></span>
               </div>
               <p>Fill out the form below, and I'll get back to you personally.</p>
-              <form class="contact-form" action="mailto:1.coach.sarvesh@gmail.com" method="post" enctype="text/plain">
+              <form class="contact-form" action="/api/contact" method="post" data-contact-form>
                 <div class="contact-form__row">
                   <label>
                     <span>Your Name</span>
-                    <input type="text" name="name" placeholder="Your Name" />
+                    <input type="text" name="name" placeholder="Your Name" autocomplete="name" required />
                   </label>
                   <label>
                     <span>Your Email</span>
-                    <input type="email" name="email" placeholder="Your Email" />
+                    <input type="email" name="email" placeholder="Your Email" autocomplete="email" required />
                   </label>
                 </div>
                 <label>
@@ -179,16 +199,21 @@
                 </label>
                 <label>
                   <span>Your Message</span>
-                  <textarea name="message" rows="5" placeholder="Your Message"></textarea>
+                  <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                </label>
+                <label class="contact-form__honeypot" aria-hidden="true">
+                  <span>Company</span>
+                  <input type="text" name="company" tabindex="-1" autocomplete="off" />
                 </label>
                 <label class="contact-form__agree">
-                  <input type="checkbox" name="terms" />
+                  <input type="checkbox" name="terms" required />
                   <span>I agree to the <a href="./privacy-policy.html">Privacy Policy</a> and <a href="./terms-and-conditions.html">Terms &amp; Conditions</a>.</span>
                 </label>
                 <button class="btn btn--primary" type="submit">
                   <span>Send Message</span>
                   <span class="btn__arrow">&rarr;</span>
                 </button>
+                <p class="contact-form__status" data-contact-status role="status" aria-live="polite"></p>
               </form>
             </article>
 
