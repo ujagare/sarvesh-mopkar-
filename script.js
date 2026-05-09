@@ -9,6 +9,27 @@ const loaderExitDurationMs = 600;
 const loaderCompleteDelayMs = 400;
 const isHomePage = !document.body.classList.contains("about-page");
 
+function loadVercelSpeedInsights() {
+  const host = window.location.hostname;
+  const isLocal =
+    host === "localhost" || host === "127.0.0.1" || host === "" || host.endsWith(".local");
+
+  if (isLocal) return;
+
+  window.si =
+    window.si ||
+    function () {
+      (window.siq = window.siq || []).push(arguments);
+    };
+
+  const script = document.createElement("script");
+  script.defer = true;
+  script.src = "/_vercel/speed-insights/script.js";
+  document.head.appendChild(script);
+}
+
+loadVercelSpeedInsights();
+
 function runLoadingScreen() {
   if (!isHomePage || !loadingScreen || !loadingWord || !loadingCounter || !loadingProgress) {
     document.body.classList.add("is-loaded");

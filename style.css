@@ -4383,9 +4383,10 @@ body.is-loaded .page-shell {
   }
 
   .value-strip__item {
-    align-items: flex-start;
+    align-items: center;
     max-width: 100%;
     gap: 0.55rem;
+    text-align: center;
   }
 
   .value-strip__item:last-of-type {
@@ -4405,6 +4406,18 @@ body.is-loaded .page-shell {
 
   .about__media {
     min-height: 250px;
+  }
+
+  .about__content {
+    text-align: center;
+  }
+
+  .about__content .eyebrow {
+    justify-content: center;
+  }
+
+  .about__content p {
+    margin-inline: auto;
   }
 
   .about__content h2 {
@@ -7219,10 +7232,12 @@ body.is-loaded .page-shell {
   }
 
   .wwm-card__heading {
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr;
+    justify-items: center;
     align-items: center;
-    gap: 0.9rem;
+    gap: 0.75rem;
     margin-bottom: 1.1rem;
+    text-align: center;
   }
 
   .wwm-card h2 {
@@ -7232,6 +7247,8 @@ body.is-loaded .page-shell {
 
   .wwm-card__content {
     padding: 1.25rem 1rem 1.18rem;
+    text-align: center;
+    align-items: center;
   }
 
   .wwm-card__content::before {
@@ -7246,6 +7263,12 @@ body.is-loaded .page-shell {
 
   .wwm-card__content > p:first-of-type {
     max-width: none;
+    margin-inline: auto;
+  }
+
+  .wwm-card__content > p:nth-of-type(2),
+  .wwm-card__content > p:last-child {
+    margin-inline: auto;
   }
 
   .wwm-bullets {
@@ -7254,15 +7277,18 @@ body.is-loaded .page-shell {
   }
 
   .wwm-bullets li {
-    padding: 0.54rem 0.6rem 0.54rem 1.55rem;
+    padding: 0.62rem 0.9rem;
     border: 1px solid rgba(201, 126, 11, 0.1);
     border-radius: 10px;
     background: rgba(255, 252, 247, 0.58);
+    text-align: center;
   }
 
   .wwm-bullets li::before {
-    left: 0.6rem;
-    top: 1.05rem;
+    position: static;
+    display: inline-block;
+    margin-right: 0.48rem;
+    vertical-align: 0.1em;
     width: 6px;
     height: 6px;
     box-shadow: 0 0 0 4px rgba(196, 122, 8, 0.11);
@@ -7287,10 +7313,12 @@ body.is-loaded .page-shell {
   }
 
   .wwm-benefits li {
-    grid-template-columns: 46px 1fr;
+    grid-template-columns: 1fr;
+    justify-items: center;
     min-height: 58px;
-    padding: 0.48rem 0.58rem;
+    padding: 0.75rem 0.7rem;
     border-radius: 12px;
+    text-align: center;
   }
 
   .wwm-benefits img {
@@ -7353,7 +7381,9 @@ body.is-loaded .page-shell {
 
   .wwm-card__heading {
     grid-template-columns: 1fr;
+    justify-items: center;
     gap: 0.75rem;
+    text-align: center;
   }
 
   .wwm-card__icon {
@@ -7370,9 +7400,11 @@ body.is-loaded .page-shell {
   }
 
   .wwm-benefits li {
-    grid-template-columns: 42px 1fr;
+    grid-template-columns: 1fr;
+    justify-items: center;
     min-height: 54px;
     font-size: 0.9rem;
+    text-align: center;
   }
 
   .wwm-benefits img {
