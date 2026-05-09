@@ -1222,12 +1222,17 @@
   .about-page .nav-toggle {
     display: inline-flex;
     margin-left: auto;
-    width: 44px;
-    height: 44px;
-    border: 1px solid rgba(201, 162, 74, 0.35);
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    width: 46px;
+    height: 46px;
+    border: 1px solid rgba(214, 169, 80, 0.48);
+    border-radius: 999px;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(214, 169, 80, 0.28), transparent 55%),
+      rgba(255, 250, 239, 0.08);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.18),
+      0 12px 28px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(12px);
   }
 
   .about-page .site-header__cta {
@@ -1240,35 +1245,185 @@
 
   .about-page .site-nav.is-open {
     display: grid;
-    position: absolute;
-    top: calc(100% + 0.5rem);
-    left: 0.5rem;
-    right: 0.5rem;
-    gap: 0;
-    padding: 0;
-    background: #2D2519;
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(201, 162, 74, 0.2);
-    border-radius: 16px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
-    overflow: hidden;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100dvh;
+    max-height: none;
+    align-content: start;
+    gap: 0.25rem;
+    padding: calc(5rem + env(safe-area-inset-top)) 1.15rem calc(1.15rem + env(safe-area-inset-bottom));
+    background:
+      radial-gradient(circle at 82% 0%, rgba(214, 169, 80, 0.22), transparent 34%),
+      radial-gradient(circle at 0% 100%, rgba(214, 169, 80, 0.1), transparent 34%),
+      linear-gradient(180deg, rgba(45, 37, 25, 0.99), rgba(15, 11, 7, 0.99)),
+      #120d08;
+    backdrop-filter: blur(22px);
+    border: 0;
+    border-radius: 0;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    overflow-y: auto;
+    animation: mobileMenuSlideIn 0.28s ease both;
   }
 
+  .about-page .site-nav.is-open::before {
+    content: "Sarvesh Mopkar";
+    position: absolute;
+    top: calc(1.15rem + env(safe-area-inset-top));
+    left: 1.15rem;
+    right: 5.2rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid rgba(214, 169, 80, 0.22);
+    color: #fff8eb;
+    font-family: "Instrument Serif", "Playfair Display", serif;
+    font-size: 1.62rem;
+    line-height: 1;
+  }
+
+  .about-page .site-nav.is-open::after {
+    content: "Private work for wealth, clarity, and inner expansion.";
+    position: absolute;
+    top: calc(3.25rem + env(safe-area-inset-top));
+    left: 1.15rem;
+    right: 5.2rem;
+    color: rgba(255, 248, 235, 0.66);
+    font-size: 0.76rem;
+    line-height: 1.35;
+  }
+
+  .about-page .site-nav.is-open .site-nav__close {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: calc(1rem + env(safe-area-inset-top));
+    right: 1.15rem;
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(214, 169, 80, 0.35);
+    border-radius: 999px;
+    background: rgba(255, 250, 239, 0.08);
+    color: transparent;
+    cursor: pointer;
+  }
+
+  .about-page .site-nav.is-open .site-nav__close::before,
+  .about-page .site-nav.is-open .site-nav__close::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background: #ffd784;
+  }
+
+  .about-page .site-nav.is-open .site-nav__close::before {
+    transform: rotate(45deg);
+  }
+
+  .about-page .site-nav.is-open .site-nav__close::after {
+    transform: rotate(-45deg);
+  }
+
+
   .about-page .site-nav.is-open .site-nav__link {
-    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 54px;
+    padding: 0.98rem 1.05rem;
+    border: 1px solid transparent;
+    border-radius: 14px;
+    color: #fff8eb;
     font-size: 1rem;
     font-weight: 500;
-    border-bottom: 1px solid rgba(201, 162, 74, 0.08);
-    transition: all 0.25s ease;
+    opacity: 1;
+    transition:
+      background-color 0.25s ease,
+      border-color 0.25s ease,
+      color 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .about-page .site-nav.is-open .site-nav__link::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: rgba(214, 169, 80, 0.48);
+    box-shadow: 0 0 14px rgba(214, 169, 80, 0.26);
+  }
+
+  .about-page .site-nav.is-open .site-nav__link::after {
+    content: "\2192";
+    position: static;
+    width: auto;
+    height: auto;
+    background: none;
+    color: rgba(255, 215, 132, 0.9);
+    opacity: 0.75;
+    transform: none;
   }
 
   .about-page .site-nav.is-open .site-nav__link:last-child {
     border-bottom: none;
   }
 
-  .about-page .site-nav.is-open .site-nav__link:hover {
-    background: rgba(201, 162, 74, 0.12);
-    padding-left: 1.5rem;
+  .about-page .site-nav.is-open .site-nav__link:hover,
+  .about-page .site-nav.is-open .site-nav__link.is-active {
+    background: rgba(214, 169, 80, 0.13);
+    border-color: rgba(214, 169, 80, 0.24);
+    color: #ffd784;
+    transform: translateX(2px);
+  }
+
+  .about-page .site-nav.is-open .site-nav__mobile-panel {
+    display: grid;
+    gap: 0.85rem;
+    margin-top: 0.65rem;
+    padding: 1rem;
+    border: 1px solid rgba(214, 169, 80, 0.22);
+    border-radius: 18px;
+    background: rgba(255, 250, 239, 0.06);
+  }
+
+  .about-page .site-nav__mobile-panel p {
+    margin: 0;
+    color: #ffd784;
+    font-family: "Instrument Serif", serif;
+    font-size: 1.35rem;
+    line-height: 1.12;
+  }
+
+  .about-page .site-nav__quick {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.45rem;
+  }
+
+  .about-page .site-nav__quick a {
+    display: grid;
+    place-items: center;
+    min-height: 38px;
+    border: 1px solid rgba(214, 169, 80, 0.2);
+    border-radius: 999px;
+    color: #fff8eb;
+    font-size: 0.78rem;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .about-page .site-nav__mobile-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    min-height: 46px;
+    border-radius: 999px;
+    color: #241b12;
+    font-weight: 700;
+    text-decoration: none;
+    background: linear-gradient(135deg, #f7d57d, #b67811);
+    box-shadow: 0 16px 32px rgba(182, 120, 17, 0.24);
   }
   
   .about-hero {
