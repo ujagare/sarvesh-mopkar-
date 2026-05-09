@@ -291,6 +291,30 @@ function setupContactForm() {
     status.dataset.state = type;
   };
 
+  let toastTimer = 0;
+
+  const showToast = (message, type) => {
+    let toast = document.querySelector("[data-contact-toast]");
+
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.className = "contact-toast";
+      toast.setAttribute("data-contact-toast", "");
+      toast.setAttribute("role", "status");
+      toast.setAttribute("aria-live", "polite");
+      document.body.appendChild(toast);
+    }
+
+    window.clearTimeout(toastTimer);
+    toast.textContent = message;
+    toast.dataset.state = type;
+    toast.classList.add("is-visible");
+
+    toastTimer = window.setTimeout(() => {
+      toast.classList.remove("is-visible");
+    }, type === "pending" ? 1800 : 5200);
+  };
+
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
@@ -312,6 +336,7 @@ function setupContactForm() {
     if (submitButton) submitButton.disabled = true;
     if (buttonLabel) buttonLabel.textContent = "Sending...";
     setStatus("Sending your message...", "pending");
+    showToast("Sending your message...", "pending");
 
     try {
       const response = await fetch(form.action, {
@@ -329,9 +354,15 @@ function setupContactForm() {
       }
 
       form.reset();
-      setStatus(result.message || "Thank you. Your message has been sent successfully.", "success");
+      const successMessage =
+        result.message || "Thank you. Your message has been sent successfully.";
+      setStatus(successMessage, "success");
+      showToast(successMessage, "success");
     } catch (error) {
-      setStatus(error.message || "Could not send your message. Please try again.", "error");
+      const errorMessage =
+        error.message || "Could not send your message. Please try again.";
+      setStatus(errorMessage, "error");
+      showToast(errorMessage, "error");
     } finally {
       if (submitButton) submitButton.disabled = false;
       if (buttonLabel) buttonLabel.textContent = defaultButtonText;

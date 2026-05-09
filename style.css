@@ -6104,6 +6104,53 @@ body.is-loaded .page-shell {
   color: #9b2c2c;
 }
 
+.contact-toast {
+  position: fixed;
+  top: max(18px, env(safe-area-inset-top));
+  left: 50%;
+  z-index: 9999;
+  width: min(92vw, 520px);
+  padding: 0.95rem 1.15rem;
+  border: 1px solid rgba(182, 120, 17, 0.24);
+  border-radius: 14px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 249, 239, 0.96));
+  box-shadow:
+    0 18px 48px rgba(35, 25, 13, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  color: #241b12;
+  font-size: 0.96rem;
+  font-weight: 600;
+  line-height: 1.45;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -18px);
+  transition:
+    opacity 0.24s ease,
+    transform 0.24s ease;
+}
+
+.contact-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.contact-toast[data-state="pending"] {
+  border-color: rgba(182, 120, 17, 0.28);
+  color: #7c551f;
+}
+
+.contact-toast[data-state="success"] {
+  border-color: rgba(36, 112, 68, 0.24);
+  color: #1f6a3f;
+}
+
+.contact-toast[data-state="error"] {
+  border-color: rgba(155, 44, 44, 0.24);
+  color: #9b2c2c;
+}
+
 .contact-prepare-card {
   position: relative;
   display: grid;
