@@ -1,0 +1,6 @@
+.vscode/
+ai-test/
+images_backup/
+images/*_backup/
+*.bak
+

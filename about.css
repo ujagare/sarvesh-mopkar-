@@ -78,7 +78,7 @@
   overflow: hidden;
   background:
     linear-gradient(90deg, rgba(250, 247, 242, 0.98) 0%, rgba(250, 247, 242, 0.94) 31%, rgba(250, 247, 242, 0.48) 47%, rgba(250, 247, 242, 0.08) 66%),
-    url("images/About/ChatGPT Image Apr 28, 2026, 03_02_20 PM.png") center / cover no-repeat;
+    url("images/About/sarvesh-mopkar-about-03.webp") center / cover no-repeat;
   color: var(--text-main);
 }
 
@@ -1276,7 +1276,7 @@
     padding: 118px 0 64px;
     background:
       linear-gradient(180deg, rgba(250, 247, 242, 0.72) 0%, rgba(250, 247, 242, 0.48) 36%, rgba(250, 247, 242, 0.16) 62%, rgba(250, 247, 242, 0.7) 100%),
-      url("images/About/mobile/ChatGPT Image Apr 28, 2026, 04_22_20 PM.png") center top / cover no-repeat;
+      url("images/About/mobile/sarvesh-mopkar-about-08.webp") center top / cover no-repeat;
   }
 
   .about-hero .about-container {
@@ -1356,7 +1356,7 @@
   }
 
   .journey-image-wrap img {
-    content: url("images/About/mobile/ChatGPT Image Apr 28, 2026, 04_31_10 PM.png");
+    content: url("images/About/mobile/sarvesh-mopkar-about-10.webp");
     height: auto;
     min-height: 280px;
   }
@@ -1372,7 +1372,7 @@
   }
 
   .philosophy-bg-image img {
-    content: url("images/About/mobile/ChatGPT Image Apr 28, 2026, 04_27_15 PM.png");
+    content: url("images/About/mobile/sarvesh-mopkar-about-09.webp");
     object-position: center top;
   }
 

@@ -23,6 +23,12 @@
   box-sizing: border-box;
 }
 
+ul, li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 html {
   scroll-behavior: auto;
   scrollbar-gutter: stable;
@@ -473,7 +479,7 @@ body.is-loaded .page-shell {
   padding: clamp(0.5rem, 2vw, 1rem) clamp(1rem, 4vw, 4rem)
     clamp(0.5rem, 2vw, 1.5rem) clamp(1rem, 2vw, 2rem);
   overflow: hidden;
-  background: url("images/home/87ce2f67-3771-49a1-b721-64fa18edbd4f.png")
+  background: url("images/home/sarvesh-mopkar-home-01.webp")
     center / cover no-repeat;
 }
 
@@ -493,7 +499,7 @@ body.is-loaded .page-shell {
   min-height: clamp(520px, 56vw, 820px);
   border-radius: 32px;
   overflow: hidden;
-  background: url("images/home/87ce2f67-3771-49a1-b721-64fa18edbd4f.png") right
+  background: url("images/home/sarvesh-mopkar-home-01.webp") right
     center / cover no-repeat;
   box-shadow: 0 28px 60px rgba(73, 47, 7, 0.08);
 }
@@ -948,7 +954,7 @@ body.is-loaded .page-shell {
   align-items: center;
   gap: 1.65rem;
   min-height: 320px;
-  background: url("images/home/ChatGPT Image Apr 24, 2026, 08_02_04 PM.png")
+  background: url("images/home/sarvesh-mopkar-home-06.webp")
     center center / 100% 100% no-repeat;
   box-shadow: var(--shadow);
 }
@@ -1314,7 +1320,7 @@ body.is-loaded .page-shell {
   overflow: hidden;
   padding-top: clamp(0.7rem, 1.6vw, 1.2rem);
   padding-bottom: clamp(0.7rem, 1.6vw, 1.2rem);
-  background: url("images/home/ChatGPT Image Apr 25, 2026, 12_15_36 AM.png")
+  background: url("images/home/sarvesh-mopkar-home-09.webp")
     center center / cover no-repeat;
   border-top: 1px solid rgba(166, 124, 46, 0.12);
   border-bottom: 1px solid rgba(166, 124, 46, 0.12);
@@ -2147,7 +2153,7 @@ body.is-loaded .page-shell {
       rgba(250, 247, 242, 0.42) 49%,
       rgba(250, 247, 242, 0.05) 72%
     ),
-    url("images/Blog/ChatGPT Image May 6, 2026, 04_00_38 PM.png") center right / cover no-repeat;
+    url("images/Blog/sarvesh-mopkar-blog-01.webp") center right / cover no-repeat;
 }
 
 .blog-hero__inner {
@@ -2469,7 +2475,7 @@ body.is-loaded .page-shell {
 .blog-subscribe__image {
   align-self: stretch;
   min-height: 210px;
-  background: url("images/Blog/ChatGPT Image May 6, 2026, 04_14_34 PM.png") left center / cover no-repeat;
+  background: url("images/Blog/sarvesh-mopkar-blog-08.webp") left center / cover no-repeat;
 }
 
 .blog-subscribe__copy {
@@ -2548,7 +2554,7 @@ body.is-loaded .page-shell {
 
 .blog-final-cta__image {
   min-height: 245px;
-  background: url("images/Blog/ChatGPT Image May 6, 2026, 04_16_31 PM.png") center / cover no-repeat;
+  background: url("images/Blog/sarvesh-mopkar-blog-09.webp") center / cover no-repeat;
 }
 
 .blog-final-cta__content {
@@ -2620,7 +2626,7 @@ body.is-loaded .page-shell {
         rgba(250, 247, 242, 0.94) 54%,
         rgba(250, 247, 242, 0.72) 100%
       ),
-      url("images/Blog/ChatGPT Image May 6, 2026, 04_00_38 PM.png") center right / cover no-repeat;
+      url("images/Blog/sarvesh-mopkar-blog-01.webp") center right / cover no-repeat;
   }
 
   .blog-hero__inner {
@@ -2717,7 +2723,7 @@ body.is-loaded .page-shell {
         rgba(250, 247, 242, 0.96) 62%,
         rgba(250, 247, 242, 0.82) 100%
       ),
-      url("images/Blog/ChatGPT Image May 6, 2026, 04_00_38 PM.png") 67% center / cover no-repeat;
+      url("images/Blog/sarvesh-mopkar-blog-01.webp") 67% center / cover no-repeat;
   }
 
   .blog-hero__inner {
@@ -2940,7 +2946,7 @@ body.is-loaded .page-shell {
       rgba(248, 244, 238, 0.35) 48%,
       rgba(248, 244, 238, 0) 68%
     ),
-    url("images/The Work/ChatGPT Image May 5, 2026, 12_28_49 AM.png") center
+    url("images/The Work/sarvesh-mopkar-the-work-01.webp") center
       right / cover no-repeat;
 }
 
@@ -3891,7 +3897,7 @@ body.is-loaded .page-shell {
         rgba(248, 245, 239, 0.18) 26%,
         rgba(248, 245, 239, 0.02) 100%
       ),
-      url("images/home/ChatGPT Image Apr 24, 2026, 07_52_22 PM.png") center
+      url("images/home/sarvesh-mopkar-home-02.webp") center
         center / cover no-repeat;
   }
 
@@ -4197,7 +4203,7 @@ body.is-loaded .page-shell {
     justify-items: center;
     text-align: center;
     min-height: 0;
-    background: url("images/home/ChatGPT Image Apr 27, 2026, 04_09_25 PM.png")
+    background: url("images/home/sarvesh-mopkar-home-10.webp")
       center bottom / 100% auto no-repeat;
   }
 
@@ -4327,7 +4333,7 @@ body.is-loaded .page-shell {
         rgba(248, 244, 238, 0.76) 52%,
         rgba(248, 244, 238, 0.98) 100%
       ),
-      url("images/The Work/ChatGPT Image May 5, 2026, 12_28_49 AM.png") center /
+      url("images/The Work/sarvesh-mopkar-the-work-01.webp") center /
         cover no-repeat !important;
   }
 
@@ -4453,7 +4459,7 @@ body.is-loaded .page-shell {
         rgba(248, 244, 238, 0.94) 40%,
         rgba(248, 244, 238, 0.88) 100%
       ),
-      url("images/The Work/ChatGPT Image May 5, 2026, 12_28_49 AM.png") center /
+      url("images/The Work/sarvesh-mopkar-the-work-01.webp") center /
         cover no-repeat !important;
   }
 
@@ -4722,7 +4728,7 @@ body.is-loaded .page-shell {
   align-items: center;
   background:
     linear-gradient(90deg, rgba(248, 245, 239, 0.98) 0%, rgba(248, 245, 239, 0.9) 35%, rgba(248, 245, 239, 0.18) 62%),
-    url("images/Philosophy/c178fa5b-1ea8-4e8e-a117-2b642384e33f.png") center / cover no-repeat;
+    url("images/Philosophy/sarvesh-mopkar-philosophy-07.webp") center / cover no-repeat;
 }
 
 .philo-hero__copy {
@@ -4779,7 +4785,7 @@ body.is-loaded .page-shell {
   overflow: hidden;
   padding: 3.2rem 0 3.7rem;
   text-align: center;
-  background: url("images/Philosophy/ChatGPT Image Apr 24, 2026, 08_02_04 PM.png") center bottom / cover no-repeat;
+  background: url("images/Philosophy/sarvesh-mopkar-philosophy-01.webp") center bottom / cover no-repeat;
   border-top: 1px solid rgba(182, 120, 17, 0.16);
   border-bottom: 1px solid rgba(182, 120, 17, 0.16);
 }
@@ -5102,13 +5108,13 @@ body.is-loaded .page-shell {
   align-items: start;
   background:
     linear-gradient(180deg, rgba(255, 252, 247, 0.88) 0%, rgba(255, 252, 247, 0.68) 50%, rgba(255, 252, 247, 0.06) 100%),
-    url("images/Philosophy/ChatGPT Image May 8, 2026, 05_35_29 PM.png") center bottom / cover no-repeat;
+    url("images/Philosophy/sarvesh-mopkar-philosophy-03.webp") center bottom / cover no-repeat;
 }
 
 .philo-card--vase {
   background:
     linear-gradient(90deg, rgba(255, 252, 247, 0.97) 0%, rgba(255, 252, 247, 0.9) 54%, rgba(255, 252, 247, 0.2) 100%),
-    url("images/Philosophy/ChatGPT Image May 8, 2026, 05_38_07 PM.png") center / cover no-repeat;
+    url("images/Philosophy/sarvesh-mopkar-philosophy-04.webp") center / cover no-repeat;
 }
 
 .philo-small-label {
@@ -5166,7 +5172,7 @@ body.is-loaded .page-shell {
   overflow: hidden;
   border: 1px solid rgba(182, 120, 17, 0.2);
   border-radius: 12px;
-  background: url("images/Philosophy/ChatGPT Image May 8, 2026, 05_38_25 PM.png") center / cover no-repeat;
+  background: url("images/Philosophy/sarvesh-mopkar-philosophy-05.webp") center / cover no-repeat;
 }
 
 .philo-cta {
@@ -5212,7 +5218,7 @@ body.is-loaded .page-shell {
     min-height: 640px;
     background:
       linear-gradient(180deg, rgba(248, 245, 239, 0.98) 0%, rgba(248, 245, 239, 0.9) 48%, rgba(248, 245, 239, 0.38) 100%),
-      url("images/Philosophy/c178fa5b-1ea8-4e8e-a117-2b642384e33f.png") center / cover no-repeat;
+      url("images/Philosophy/sarvesh-mopkar-philosophy-07.webp") center / cover no-repeat;
   }
 
   .philo-problem__grid,
@@ -5308,7 +5314,7 @@ body.is-loaded .page-shell {
       linear-gradient(180deg, rgba(184, 122, 20, 0.22) 0%, rgba(231, 188, 95, 0.34) 24%, rgba(252, 239, 205, 0.88) 58%, rgba(248, 245, 239, 0.98) 100%),
       radial-gradient(circle at 78% 14%, rgba(255, 220, 134, 0.62), transparent 36%),
       radial-gradient(circle at 18% 26%, rgba(201, 136, 32, 0.28), transparent 34%),
-      url("images/Philosophy/c178fa5b-1ea8-4e8e-a117-2b642384e33f.png") 72% top / auto 52% no-repeat,
+      url("images/Philosophy/sarvesh-mopkar-philosophy-07.webp") 72% top / auto 52% no-repeat,
       linear-gradient(180deg, #e7bc5f 0%, #fbf0d2 54%, #fbf8f2 100%);
     isolation: isolate;
   }
@@ -5532,13 +5538,13 @@ body.is-loaded .page-shell {
   .philo-card--mountain {
     background:
       linear-gradient(180deg, rgba(255, 252, 247, 0.94) 0%, rgba(255, 252, 247, 0.82) 48%, rgba(255, 252, 247, 0.1) 100%),
-      url("images/Philosophy/ChatGPT Image May 8, 2026, 05_35_29 PM.png") center bottom / cover no-repeat;
+      url("images/Philosophy/sarvesh-mopkar-philosophy-03.webp") center bottom / cover no-repeat;
   }
 
   .philo-card--vase {
     background:
       linear-gradient(180deg, rgba(255, 252, 247, 0.97) 0%, rgba(255, 252, 247, 0.9) 62%, rgba(255, 252, 247, 0.34) 100%),
-      url("images/Philosophy/ChatGPT Image May 8, 2026, 05_38_07 PM.png") center bottom / cover no-repeat;
+      url("images/Philosophy/sarvesh-mopkar-philosophy-04.webp") center bottom / cover no-repeat;
   }
 
   .philo-card h2 {
@@ -5559,7 +5565,7 @@ body.is-loaded .page-shell {
     min-height: 240px;
     padding: 2rem 1rem;
     border-radius: 16px;
-    background: url("images/Philosophy/ChatGPT Image May 8, 2026, 05_38_25 PM.png") center / cover no-repeat;
+    background: url("images/Philosophy/sarvesh-mopkar-philosophy-05.webp") center / cover no-repeat;
   }
 
   .philo-cta__inner {
@@ -5611,7 +5617,7 @@ body.is-loaded .page-shell {
       linear-gradient(180deg, rgba(184, 122, 20, 0.24) 0%, rgba(231, 188, 95, 0.34) 24%, rgba(252, 239, 205, 0.9) 58%, rgba(248, 245, 239, 0.98) 100%),
       radial-gradient(circle at 78% 14%, rgba(255, 220, 134, 0.58), transparent 36%),
       radial-gradient(circle at 18% 26%, rgba(201, 136, 32, 0.26), transparent 34%),
-      url("images/Philosophy/c178fa5b-1ea8-4e8e-a117-2b642384e33f.png") 74% top / auto 46% no-repeat,
+      url("images/Philosophy/sarvesh-mopkar-philosophy-07.webp") 74% top / auto 46% no-repeat,
       linear-gradient(180deg, #e7bc5f 0%, #fbf0d2 54%, #fbf8f2 100%);
   }
 
@@ -5669,7 +5675,7 @@ body.is-loaded .page-shell {
   align-items: center;
   background:
     linear-gradient(90deg, rgba(248, 245, 239, 0.98) 0%, rgba(248, 245, 239, 0.94) 27%, rgba(248, 245, 239, 0.46) 44%, rgba(248, 245, 239, 0.02) 62%),
-    url("images/Contact/ChatGPT Image May 9, 2026, 12_34_42 AM.png") center / cover no-repeat;
+    url("images/Contact/sarvesh-mopkar-contact-01.webp") center / cover no-repeat;
 }
 
 .contact-hero__copy {
@@ -5993,7 +5999,7 @@ body.is-loaded .page-shell {
   display: grid;
   align-items: stretch;
   padding: 10px;
-  background: url("images/Contact/ChatGPT Image May 9, 2026, 12_45_06 AM.png") center / cover no-repeat;
+  background: url("images/Contact/sarvesh-mopkar-contact-02.webp") center / cover no-repeat;
 }
 
 .contact-prepare-card::before {
@@ -6073,7 +6079,7 @@ body.is-loaded .page-shell {
   padding: 2.2rem clamp(1.5rem, 4vw, 4rem);
   border: 1px solid rgba(182, 120, 17, 0.2);
   border-radius: 14px;
-  background: url("images/Contact/ChatGPT Image May 9, 2026, 12_46_58 AM.png") center / cover no-repeat;
+  background: url("images/Contact/sarvesh-mopkar-contact-03.webp") center / cover no-repeat;
   box-shadow: 0 16px 36px rgba(75, 47, 12, 0.08);
 }
 
@@ -6105,7 +6111,7 @@ body.is-loaded .page-shell {
     min-height: 620px;
     background:
       linear-gradient(180deg, rgba(248, 245, 239, 0.98) 0%, rgba(248, 245, 239, 0.9) 48%, rgba(248, 245, 239, 0.3) 100%),
-      url("images/Contact/ChatGPT Image May 9, 2026, 12_34_42 AM.png") center / cover no-repeat;
+      url("images/Contact/sarvesh-mopkar-contact-01.webp") center / cover no-repeat;
   }
 
   .contact-info-grid {
@@ -6145,7 +6151,7 @@ body.is-loaded .page-shell {
     padding: 3rem 0 2.4rem;
     background:
       linear-gradient(180deg, rgba(248, 245, 239, 0.97) 0%, rgba(248, 245, 239, 0.9) 46%, rgba(248, 245, 239, 0.48) 100%),
-      url("images/Contact/ChatGPT Image May 9, 2026, 12_34_42 AM.png") 68% top / auto 100% no-repeat,
+      url("images/Contact/sarvesh-mopkar-contact-01.webp") 68% top / auto 100% no-repeat,
       #f8f5ef;
   }
 
@@ -6233,7 +6239,7 @@ body.is-loaded .page-shell {
 
   .contact-prepare-card {
     min-height: 560px;
-    background: url("images/Contact/ChatGPT Image May 9, 2026, 12_45_06 AM.png") center bottom / cover no-repeat;
+    background: url("images/Contact/sarvesh-mopkar-contact-02.webp") center bottom / cover no-repeat;
   }
 
   .contact-prepare-card__content {
@@ -6251,7 +6257,7 @@ body.is-loaded .page-shell {
     justify-items: center;
     align-content: center;
     padding: 2.2rem 1.2rem;
-    background: url("images/Contact/ChatGPT Image May 9, 2026, 12_46_58 AM.png") center / cover no-repeat;
+    background: url("images/Contact/sarvesh-mopkar-contact-03.webp") center / cover no-repeat;
   }
 
   .contact-bottom-cta__inner .btn {
@@ -6294,4 +6300,823 @@ body.is-loaded .page-shell {
   .contact-bottom-cta__inner {
     min-height: 340px;
   }
+}
+
+/* Work With Me page */
+.work-with-me-page {
+  background:
+    radial-gradient(circle at 16% 8%, rgba(215, 157, 56, 0.12), transparent 28%),
+    radial-gradient(circle at 86% 16%, rgba(201, 162, 74, 0.14), transparent 26%),
+    linear-gradient(180deg, #fbf8f2 0%, #f7f0e7 54%, #fffaf4 100%);
+}
+
+.wwm-hero {
+  position: relative;
+  min-height: clamp(520px, 48vw, 700px);
+  overflow: hidden;
+  display: grid;
+  align-items: center;
+  margin-top: -1px;
+}
+
+.wwm-hero__media {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 250, 243, 0.98) 0%, rgba(255, 250, 243, 0.86) 30%, rgba(255, 250, 243, 0.28) 52%, rgba(255, 250, 243, 0) 76%),
+    linear-gradient(180deg, rgba(255, 250, 243, 0) 72%, #fbf5ed 100%),
+    url("images/Work with me/ChatGPT Image May 9, 2026, 02_32_02 PM.png") center right / cover no-repeat;
+}
+
+.wwm-hero__inner {
+  position: relative;
+  z-index: 1;
+  padding-inline: clamp(1.25rem, 6vw, 8.2rem);
+}
+
+.wwm-hero__copy {
+  width: min(560px, 92vw);
+  padding-top: clamp(1rem, 4vw, 3.2rem);
+}
+
+.wwm-eyebrow {
+  margin: 0 0 1.7rem;
+  color: #c17800;
+  font-family: "Barlow", sans-serif;
+  font-size: clamp(0.8rem, 0.92vw, 1rem);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.wwm-hero h1 {
+  margin: 0;
+  color: #17130e;
+  font-family: "Instrument Serif", "Playfair Display", serif;
+  font-size: clamp(3.2rem, 5.7vw, 6.2rem);
+  line-height: 0.94;
+  font-weight: 400;
+}
+
+.wwm-hero h1 span {
+  color: #c47a08;
+}
+
+.wwm-rule {
+  display: block;
+  width: 48px;
+  height: 2px;
+  margin: 2.25rem 0 1.7rem;
+  background: #c47a08;
+}
+
+.wwm-hero p:not(.wwm-eyebrow) {
+  margin: 0;
+  color: #211b15;
+  font-size: clamp(1rem, 1.2vw, 1.18rem);
+  line-height: 1.8;
+}
+
+.wwm-offerings {
+  position: relative;
+  z-index: 2;
+  margin-top: clamp(-5.5rem, -6vw, -2rem);
+  padding-bottom: clamp(1.4rem, 3vw, 2.5rem);
+}
+
+.wwm-offerings__inner {
+  display: grid;
+  gap: clamp(1.1rem, 1.8vw, 1.65rem);
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding-inline: clamp(0.75rem, 2vw, 2rem);
+}
+
+.wwm-card {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(240px, 0.95fr) minmax(300px, 1.05fr) minmax(230px, 0.64fr);
+  align-items: stretch;
+  min-height: 250px;
+  border: 1px solid rgba(201, 126, 11, 0.24);
+  border-radius: 10px;
+  background:
+    linear-gradient(90deg, rgba(255, 252, 247, 0.96), rgba(255, 252, 247, 0.86)),
+    #fffaf4;
+  box-shadow: 0 18px 42px rgba(88, 55, 3, 0.1);
+}
+
+.wwm-card--feature {
+  grid-template-columns: minmax(300px, 1.2fr) minmax(330px, 1fr) minmax(250px, 0.7fr);
+  min-height: 320px;
+}
+
+.wwm-card__image {
+  position: relative;
+  min-height: 230px;
+  overflow: hidden;
+  align-self: stretch;
+}
+
+.wwm-card__image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255, 250, 243, 0) 58%, rgba(255, 250, 243, 0.94) 100%);
+  pointer-events: none;
+}
+
+.wwm-card--trader .wwm-card__image::before,
+.wwm-card--energy .wwm-card__image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(255, 250, 243, 0.95) 0%, rgba(255, 250, 243, 0.2) 34%, rgba(255, 250, 243, 0) 68%);
+  pointer-events: none;
+}
+
+.wwm-card__image img {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+}
+
+.wwm-card__image--kuber {
+  background:
+    radial-gradient(circle at 30% 48%, rgba(224, 164, 52, 0.1), transparent 45%),
+    #fffaf3;
+}
+
+.wwm-card__image--kuber img {
+  object-fit: contain;
+  padding: clamp(1rem, 2vw, 2rem);
+}
+
+.wwm-card__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.5rem, 2.35vw, 2.35rem) clamp(1.25rem, 2.2vw, 2.15rem);
+  background:
+    radial-gradient(circle at 4% 12%, rgba(218, 149, 22, 0.08), transparent 32%),
+    linear-gradient(180deg, rgba(255, 252, 247, 0.54), rgba(255, 252, 247, 0));
+}
+
+.wwm-card__content::before {
+  content: "";
+  position: absolute;
+  left: clamp(1.15rem, 2vw, 1.85rem);
+  top: clamp(1.1rem, 1.8vw, 1.7rem);
+  bottom: clamp(1.1rem, 1.8vw, 1.7rem);
+  width: 1px;
+  background: linear-gradient(180deg, rgba(201, 126, 11, 0), rgba(201, 126, 11, 0.28), rgba(201, 126, 11, 0));
+  opacity: 0.85;
+}
+
+.wwm-card__heading {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: clamp(1rem, 1.6vw, 1.45rem);
+  margin-bottom: clamp(1rem, 1.45vw, 1.35rem);
+}
+
+.wwm-card__icon {
+  display: grid;
+  place-items: center;
+  width: clamp(66px, 5.4vw, 84px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(201, 126, 11, 0.56);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 24%, rgba(255, 255, 255, 0.98), rgba(255, 247, 232, 0.7)),
+    rgba(255, 250, 243, 0.88);
+  box-shadow:
+    0 10px 24px rgba(140, 82, 0, 0.11),
+    inset 0 0 0 7px rgba(201, 126, 11, 0.045);
+  flex: 0 0 auto;
+}
+
+.wwm-card__icon img {
+  width: 48%;
+  height: 48%;
+  object-fit: contain;
+}
+
+.wwm-card h2 {
+  margin: 0;
+  color: #17130e;
+  font-family: "Instrument Serif", "Playfair Display", serif;
+  font-size: clamp(2.15rem, 2.9vw, 3.25rem);
+  line-height: 0.92;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+.wwm-card h2 span {
+  color: #c47a08;
+  font-size: 0.88em;
+}
+
+.wwm-card p {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 0.82rem;
+  color: #2b241d;
+  font-size: clamp(0.92rem, 0.98vw, 1.06rem);
+  line-height: 1.62;
+}
+
+.wwm-card__content > p:first-of-type {
+  max-width: 42ch;
+  color: #17130e;
+  font-weight: 500;
+}
+
+.wwm-card__content > p:nth-of-type(2) {
+  margin-bottom: 0.52rem;
+  color: #8f5a06;
+  font-family: "Barlow", sans-serif;
+  font-size: clamp(0.78rem, 0.82vw, 0.9rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.wwm-card__content > p:last-child {
+  margin-bottom: 0;
+  padding-top: 0.15rem;
+  color: #3a2f24;
+}
+
+.wwm-bullets {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.42rem;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+
+.wwm-bullets li {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding-left: 1.45rem;
+  color: #17130e;
+  font-size: clamp(0.88rem, 0.94vw, 1rem);
+  line-height: 1.42;
+  font-weight: 500;
+}
+
+.wwm-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.58em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #c47a08;
+  box-shadow: 0 0 0 5px rgba(196, 122, 8, 0.12);
+}
+
+.wwm-card__aside {
+  position: relative;
+  display: grid;
+  align-content: center;
+  gap: clamp(1rem, 1.5vw, 1.45rem);
+  padding: clamp(1.25rem, 2vw, 2.1rem) clamp(1.15rem, 2vw, 1.85rem);
+  border-left: 1px solid rgba(201, 126, 11, 0.24);
+  background:
+    linear-gradient(180deg, rgba(255, 250, 243, 0.72), rgba(250, 241, 228, 0.48)),
+    radial-gradient(circle at 88% 10%, rgba(218, 149, 22, 0.14), transparent 34%);
+}
+
+.wwm-card__aside::before {
+  content: "";
+  position: absolute;
+  inset: clamp(0.75rem, 1vw, 1rem);
+  border: 1px solid rgba(201, 126, 11, 0.14);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.wwm-benefits {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: clamp(0.62rem, 0.9vw, 0.9rem);
+}
+
+.wwm-benefits li {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  align-items: center;
+  gap: 0.78rem;
+  min-height: 64px;
+  padding: 0.56rem 0.68rem;
+  border: 1px solid rgba(201, 126, 11, 0.12);
+  border-radius: 8px;
+  color: #211b15;
+  background: rgba(255, 252, 247, 0.64);
+  box-shadow: 0 8px 20px rgba(84, 52, 4, 0.045);
+  font-size: clamp(0.86rem, 0.92vw, 0.98rem);
+  font-weight: 500;
+  line-height: 1.3;
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    background-color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.wwm-benefits li:hover {
+  transform: translateX(3px);
+  border-color: rgba(201, 126, 11, 0.32);
+  background: rgba(255, 252, 247, 0.9);
+  box-shadow: 0 12px 26px rgba(84, 52, 4, 0.08);
+}
+
+.wwm-benefits img {
+  width: 46px;
+  height: 46px;
+  padding: 0.42rem;
+  border: 1px solid rgba(201, 126, 11, 0.24);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 22%, rgba(255, 255, 255, 0.95), rgba(255, 247, 233, 0.72)),
+    rgba(255, 250, 243, 0.86);
+  object-fit: contain;
+}
+
+.wwm-action {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 54px;
+  padding: 0.88rem 1.05rem 0.88rem 1.28rem;
+  border: 1px solid rgba(255, 222, 154, 0.42);
+  border-radius: 8px;
+  color: #fffaf3;
+  background:
+    linear-gradient(180deg, rgba(234, 168, 40, 0.96) 0%, rgba(179, 101, 0, 0.98) 100%),
+    #bf7609;
+  box-shadow:
+    0 14px 24px rgba(154, 90, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  font-weight: 600;
+  font-size: clamp(0.9rem, 0.98vw, 1rem);
+  white-space: nowrap;
+  transition: transform 0.24s ease, box-shadow 0.24s ease;
+}
+
+.wwm-action span {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(255, 250, 243, 0.16);
+}
+
+.wwm-action:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 18px 34px rgba(154, 90, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.34);
+}
+
+.wwm-closing {
+  overflow: hidden;
+  background: url("images/Work with me/sarvesh-mopkar-home-06.webp") center / cover no-repeat;
+  border-top: 1px solid rgba(201, 126, 11, 0.18);
+  border-bottom: 1px solid rgba(201, 126, 11, 0.14);
+}
+
+.wwm-closing__inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 3rem);
+  min-height: clamp(230px, 19vw, 320px);
+  width: 100%;
+  max-width: none;
+  padding-inline: clamp(1rem, 4vw, 4.5rem);
+}
+
+.wwm-closing p {
+  margin: 0;
+  color: #2b2219;
+  font-family: "Instrument Serif", "Playfair Display", serif;
+  font-size: clamp(1.6rem, 2.1vw, 2.35rem);
+  line-height: 1.12;
+  text-align: center;
+}
+
+.wwm-rule--center {
+  display: none;
+  margin-inline: auto;
+}
+
+.wwm-action--wide {
+  min-width: min(280px, 100%);
+}
+
+@media (max-width: 1080px) {
+  .wwm-card,
+  .wwm-card--feature {
+    grid-template-columns: minmax(240px, 0.9fr) minmax(320px, 1.1fr);
+  }
+
+  .wwm-card__aside {
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    border-left: 0;
+    border-top: 1px solid rgba(201, 126, 11, 0.2);
+  }
+
+  .wwm-benefits {
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+  }
+
+  .wwm-closing__inner {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    min-height: clamp(260px, 34vw, 360px);
+    padding-block: 2.4rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .work-with-me-page {
+    background:
+      radial-gradient(circle at 50% 0%, rgba(214, 154, 38, 0.13), transparent 34%),
+      linear-gradient(180deg, #fffaf3 0%, #f8efe4 52%, #fffaf5 100%);
+  }
+
+  .wwm-hero {
+    min-height: 700px;
+    align-items: start;
+  }
+
+  .wwm-hero__media {
+    background:
+      linear-gradient(180deg, rgba(255, 250, 243, 0.92) 0%, rgba(255, 250, 243, 0.44) 34%, rgba(255, 250, 243, 0) 72%),
+      url("images/Work with me/ChatGPT Image May 9, 2026, 02_32_02 PM.png") 67% bottom / auto 65% no-repeat;
+  }
+
+  .wwm-hero__inner {
+    padding-top: clamp(4rem, 15vw, 5.3rem);
+    padding-inline: 1.15rem;
+  }
+
+  .wwm-hero__copy {
+    width: 100%;
+    padding-top: 0;
+  }
+
+  .wwm-eyebrow {
+    margin-bottom: 1.2rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+  }
+
+  .wwm-hero h1 {
+    font-size: clamp(3.15rem, 14.2vw, 4.4rem);
+    line-height: 0.9;
+    max-width: 8.2ch;
+  }
+
+  .wwm-rule {
+    width: 54px;
+    margin: 1.9rem 0 1.25rem;
+  }
+
+  .wwm-hero p:not(.wwm-eyebrow) {
+    width: min(100%, 350px);
+    padding: 0.82rem 0.95rem;
+    border: 1px solid rgba(196, 122, 8, 0.12);
+    border-radius: 12px;
+    background: rgba(255, 250, 243, 0.58);
+    box-shadow: 0 14px 32px rgba(84, 52, 4, 0.08);
+    backdrop-filter: blur(6px);
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .wwm-offerings {
+    margin-top: 0;
+    padding-top: 1.15rem;
+    padding-bottom: 1.4rem;
+  }
+
+  .wwm-offerings__inner {
+    gap: 1.05rem;
+    padding-inline: 0.82rem;
+  }
+
+  .wwm-card,
+  .wwm-card--feature {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    border-radius: 18px;
+    border-color: rgba(201, 126, 11, 0.2);
+    box-shadow: 0 18px 38px rgba(76, 45, 4, 0.12);
+  }
+
+  .wwm-card--trader .wwm-card__content,
+  .wwm-card--energy .wwm-card__content {
+    order: 2;
+  }
+
+  .wwm-card--trader .wwm-card__image,
+  .wwm-card--energy .wwm-card__image {
+    order: 1;
+  }
+
+  .wwm-card__aside {
+    order: 3;
+    grid-template-columns: 1fr;
+  }
+
+  .wwm-card__image {
+    min-height: 0;
+    aspect-ratio: 16 / 10.5;
+    border-bottom: 1px solid rgba(201, 126, 11, 0.1);
+  }
+
+  .wwm-card__image::after {
+    background: linear-gradient(180deg, rgba(255, 250, 243, 0) 58%, rgba(255, 250, 243, 0.9) 100%);
+  }
+
+  .wwm-card--trader .wwm-card__image::before,
+  .wwm-card--energy .wwm-card__image::before {
+    background: linear-gradient(180deg, rgba(255, 250, 243, 0) 50%, rgba(255, 250, 243, 0.5) 100%);
+  }
+
+  .wwm-card__image--kuber img {
+    padding: 0.85rem 0.85rem 0.25rem;
+  }
+
+  .wwm-card__heading {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 0.9rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .wwm-card h2 {
+    font-size: clamp(2.05rem, 8.6vw, 2.8rem);
+    line-height: 0.96;
+  }
+
+  .wwm-card__content {
+    padding: 1.25rem 1rem 1.18rem;
+  }
+
+  .wwm-card__content::before {
+    left: 1rem;
+    right: 1rem;
+    top: auto;
+    bottom: 0;
+    width: auto;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(201, 126, 11, 0), rgba(201, 126, 11, 0.22), rgba(201, 126, 11, 0));
+  }
+
+  .wwm-card__content > p:first-of-type {
+    max-width: none;
+  }
+
+  .wwm-bullets {
+    gap: 0.5rem;
+    margin-bottom: 0.95rem;
+  }
+
+  .wwm-bullets li {
+    padding: 0.54rem 0.6rem 0.54rem 1.55rem;
+    border: 1px solid rgba(201, 126, 11, 0.1);
+    border-radius: 10px;
+    background: rgba(255, 252, 247, 0.58);
+  }
+
+  .wwm-bullets li::before {
+    left: 0.6rem;
+    top: 1.05rem;
+    width: 6px;
+    height: 6px;
+    box-shadow: 0 0 0 4px rgba(196, 122, 8, 0.11);
+  }
+
+  .wwm-card__aside {
+    padding: 1.05rem 0.9rem 1rem;
+    border-top-color: rgba(201, 126, 11, 0.14);
+    background:
+      linear-gradient(180deg, rgba(255, 250, 243, 0.84), rgba(250, 241, 228, 0.62)),
+      radial-gradient(circle at 92% 4%, rgba(218, 149, 22, 0.14), transparent 36%);
+  }
+
+  .wwm-card__aside::before {
+    inset: 0.55rem;
+    border-radius: 12px;
+  }
+
+  .wwm-benefits {
+    grid-template-columns: 1fr;
+    gap: 0.62rem;
+  }
+
+  .wwm-benefits li {
+    grid-template-columns: 46px 1fr;
+    min-height: 58px;
+    padding: 0.48rem 0.58rem;
+    border-radius: 12px;
+  }
+
+  .wwm-benefits img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .wwm-action {
+    width: 100%;
+    min-height: 52px;
+    border-radius: 12px;
+  }
+
+  .wwm-closing {
+    background-position: center;
+    background-size: cover;
+  }
+
+  .wwm-closing__inner {
+    min-height: 330px;
+    padding-inline: 1rem;
+    padding-block: 2.2rem;
+  }
+
+  .wwm-closing p {
+    font-size: clamp(1.58rem, 6.4vw, 2.12rem);
+    line-height: 1.08;
+    text-shadow: 0 1px 12px rgba(255, 250, 243, 0.72);
+  }
+
+  .wwm-rule--center {
+    display: block;
+    margin: 0.4rem auto 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .wwm-hero {
+    min-height: 670px;
+  }
+
+  .wwm-hero__media {
+    background:
+      linear-gradient(180deg, rgba(255, 250, 243, 0.92) 0%, rgba(255, 250, 243, 0.42) 34%, rgba(255, 250, 243, 0) 72%),
+      url("images/Work with me/ChatGPT Image May 9, 2026, 02_32_02 PM.png") 67% bottom / auto 62% no-repeat;
+  }
+
+  .wwm-hero h1 {
+    font-size: clamp(3rem, 13.4vw, 3.8rem);
+  }
+
+  .wwm-hero p:not(.wwm-eyebrow) {
+    width: min(100%, 330px);
+    padding: 0.75rem 0.82rem;
+  }
+
+  .wwm-offerings__inner {
+    padding-inline: 0.7rem;
+  }
+
+  .wwm-card__heading {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .wwm-card__icon {
+    width: 62px;
+  }
+
+  .wwm-card__content,
+  .wwm-card__aside {
+    padding-inline: 0.86rem;
+  }
+
+  .wwm-card__image {
+    aspect-ratio: 15 / 10.8;
+  }
+
+  .wwm-benefits li {
+    grid-template-columns: 42px 1fr;
+    min-height: 54px;
+    font-size: 0.9rem;
+  }
+
+  .wwm-benefits img {
+    width: 38px;
+    height: 38px;
+  }
+
+  .wwm-action {
+    padding-inline: 1rem 0.78rem;
+    font-size: 0.92rem;
+  }
+
+  .wwm-action span {
+    width: 28px;
+    height: 28px;
+  }
+
+  .wwm-closing__inner {
+    min-height: 300px;
+  }
+
+  .wwm-hero p:not(.wwm-eyebrow) br,
+  .wwm-closing p br {
+    display: none;
+  }
+}
+
+/* Legal pages */
+.legal-page {
+  background:
+    radial-gradient(circle at 18% 8%, rgba(201, 162, 74, 0.1), transparent 28%),
+    linear-gradient(180deg, #fbf8f2 0%, #f8f0e5 100%);
+}
+
+.legal-hero {
+  padding: clamp(4rem, 8vw, 7rem) 0 clamp(2rem, 4vw, 3.4rem);
+}
+
+.legal-hero__inner,
+.legal-content__inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding-inline: clamp(1rem, 4vw, 2rem);
+}
+
+.legal-hero h1 {
+  margin: 0 0 1rem;
+  font-family: "Instrument Serif", "Playfair Display", serif;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  line-height: 0.95;
+  font-weight: 400;
+}
+
+.legal-hero p:not(.wwm-eyebrow) {
+  margin: 0;
+  color: #4d4238;
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  line-height: 1.7;
+}
+
+.legal-content {
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+.legal-content article {
+  padding: clamp(1.4rem, 3vw, 2.4rem);
+  border: 1px solid rgba(201, 126, 11, 0.18);
+  border-radius: 14px;
+  background: rgba(255, 252, 247, 0.82);
+  box-shadow: 0 18px 42px rgba(88, 55, 3, 0.09);
+}
+
+.legal-content h2 {
+  margin: 1.4rem 0 0.55rem;
+  font-family: "Instrument Serif", "Playfair Display", serif;
+  font-size: clamp(1.55rem, 2.2vw, 2.2rem);
+  font-weight: 400;
+}
+
+.legal-content h2:first-child {
+  margin-top: 0;
+}
+
+.legal-content p {
+  margin: 0;
+  color: #342b23;
+  line-height: 1.75;
+}
+
+.legal-content a,
+.legal-page .footer__bottom a {
+  color: #a76500;
+  font-weight: 600;
 }
