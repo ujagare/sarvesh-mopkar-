@@ -2,6 +2,8 @@ const TO_EMAIL = process.env.CONTACT_TO_EMAIL || "1.coach.sarvesh@gmail.com";
 const FROM_EMAIL =
   process.env.RESEND_FROM_EMAIL || "Sarvesh Mopkar Website <onboarding@resend.dev>";
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || "";
+const SUPABASE_URL = process.env.SUPABASE_URL || "";
+const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
 const RATE_LIMIT_WINDOW_MS = 60 * 1000;
 const RATE_LIMIT_MAX = 3;
 const rateLimitStore = new Map();
@@ -76,6 +78,30 @@ async function sendResendEmail(payload) {
   });
 }
 
+async function saveContactSubmission(payload) {
+  if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
+    return { skipped: true };
+  }
+
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/contact_submissions`, {
+    method: "POST",
+    headers: {
+      apikey: SUPABASE_SERVICE_ROLE_KEY,
+      Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
+      "Content-Type": "application/json",
+      Prefer: "return=minimal",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    const detail = await response.text().catch(() => "");
+    throw new Error(detail || "Supabase insert failed.");
+  }
+
+  return { skipped: false };
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
@@ -137,6 +163,21 @@ module.exports = async function handler(req, res) {
   const safeSubject = escapeHtml(subject);
   const safeMessage = escapeHtml(message).replace(/\n/g, "<br />");
   const safeSubmittedAt = escapeHtml(submittedAt);
+
+  try {
+    await saveContactSubmission({
+      name,
+      email,
+      subject,
+      message,
+      accepted_terms: acceptedTerms,
+      source: "website_contact_form",
+      user_agent: cleanText(req.headers["user-agent"] || "", 500),
+      ip_address: cleanText(clientIp, 120),
+    });
+  } catch (error) {
+    console.error("Supabase contact submission failed:", error);
+  }
 
   const adminText = [
     "New website enquiry",
