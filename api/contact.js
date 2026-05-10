@@ -173,6 +173,9 @@ module.exports = async function handler(req, res) {
     });
   } catch (error) {
     console.error("Supabase contact submission failed:", error);
+    return sendJson(res, 502, {
+      message: "Could not save your message right now. Please try again later.",
+    });
   }
 
   const adminText = [
