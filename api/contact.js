@@ -83,7 +83,7 @@ async function saveContactSubmission(payload) {
     return { skipped: true };
   }
 
-  const response = await fetch(`${SUPABASE_URL}/rest/v1/contact_submissions`, {
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/contacts`, {
     method: "POST",
     headers: {
       apikey: SUPABASE_SERVICE_ROLE_KEY,
@@ -170,10 +170,6 @@ module.exports = async function handler(req, res) {
       email,
       subject,
       message,
-      accepted_terms: acceptedTerms,
-      source: "website_contact_form",
-      user_agent: cleanText(req.headers["user-agent"] || "", 500),
-      ip_address: cleanText(clientIp, 120),
     });
   } catch (error) {
     console.error("Supabase contact submission failed:", error);
