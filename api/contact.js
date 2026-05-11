@@ -16,6 +16,46 @@ function normalizeSupabaseUrl(value = "") {
   return cleaned;
 }
 
+function isSupabaseUrl(value = "") {
+  return /^https:\/\/[a-z0-9]+\.supabase\.co$/i.test(normalizeSupabaseUrl(value).replace(/\/+$/, ""));
+}
+
+function isSupabaseKey(value = "") {
+  const cleaned = cleanEnv(value);
+  return /^sb_(?:secret|publishable)_[A-Za-z0-9._-]+$/.test(cleaned) || /^eyJ[A-Za-z0-9._-]+$/.test(cleaned);
+}
+
+function firstMatching(values, predicate) {
+  return values.map(cleanEnv).find((value) => value && predicate(value)) || "";
+}
+
+function getSupabaseConfig() {
+  const urlCandidates = [
+    process.env.SUPABASE_URL,
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.VITE_SUPABASE_URL,
+    process.env.SUPABASE_PROJECT_URL,
+    process.env.SUPABASE_PROJECT_REF,
+    "https://yhspeotjjjkeryodqxtn.supabase.co",
+  ];
+  const keyCandidates = [
+    process.env.SUPABASE_SERVICE_ROLE_KEY,
+    process.env.SUPABASE_SERVICE_KEY,
+    process.env.SUPABASE_SECRET_KEY,
+    process.env.SUPABASE_ANON_KEY,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    process.env.VITE_SUPABASE_ANON_KEY,
+    process.env.SUPABASE_URL,
+  ];
+
+  const url = firstMatching(urlCandidates, isSupabaseUrl);
+  const key = firstMatching(keyCandidates, isSupabaseKey);
+  return {
+    key,
+    url: normalizeSupabaseUrl(url).replace(/\/+$/, ""),
+  };
+}
+
 function getPublicErrorMessage(error) {
   const message = String(error?.message || "Supabase insert failed.");
   return message
@@ -26,19 +66,6 @@ function getPublicErrorMessage(error) {
     .slice(0, 500);
 }
 
-const CONFIGURED_SUPABASE_URL = cleanEnv(
-  process.env.SUPABASE_URL ||
-    process.env.NEXT_PUBLIC_SUPABASE_URL ||
-    process.env.VITE_SUPABASE_URL
-);
-const CONFIGURED_SUPABASE_KEY = cleanEnv(
-  process.env.SUPABASE_SERVICE_ROLE_KEY ||
-    process.env.SUPABASE_SERVICE_KEY ||
-    process.env.SUPABASE_SECRET_KEY ||
-    process.env.SUPABASE_ANON_KEY ||
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
-    process.env.VITE_SUPABASE_ANON_KEY
-);
 const SUPABASE_CONTACT_TABLE = cleanEnv(process.env.SUPABASE_CONTACT_TABLE) || "contacts";
 const RATE_LIMIT_WINDOW_MS = 60 * 1000;
 const RATE_LIMIT_MAX = 3;
@@ -115,19 +142,19 @@ async function sendResendEmail(payload) {
 }
 
 async function saveContactSubmission(payload) {
-  if (!CONFIGURED_SUPABASE_URL || !CONFIGURED_SUPABASE_KEY) {
+  const supabaseConfig = getSupabaseConfig();
+  if (!supabaseConfig.url || !supabaseConfig.key) {
     throw new Error(
       "Supabase is not configured. Add SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY or SUPABASE_ANON_KEY environment variables."
     );
   }
 
-  const normalizedSupabaseUrl = normalizeSupabaseUrl(CONFIGURED_SUPABASE_URL).replace(/\/+$/, "");
-  if (!/^https:\/\/[a-z0-9]+\.supabase\.co$/i.test(normalizedSupabaseUrl)) {
+  if (!isSupabaseUrl(supabaseConfig.url)) {
     throw new Error("SUPABASE_URL must look like https://your-project-ref.supabase.co.");
   }
 
-  const baseUrls = [normalizedSupabaseUrl];
-  const apiKeys = [CONFIGURED_SUPABASE_KEY];
+  const baseUrls = [supabaseConfig.url];
+  const apiKeys = [supabaseConfig.key];
   const fullContactRow = {
     accepted_terms: payload.accepted_terms,
     email: payload.email,
