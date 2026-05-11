@@ -20,6 +20,8 @@ function getPublicErrorMessage(error) {
   const message = String(error?.message || "Supabase insert failed.");
   return message
     .replace(/Bearer\s+[A-Za-z0-9._-]+/gi, "Bearer [redacted]")
+    .replace(/sb_(?:secret|publishable)_[A-Za-z0-9._-]+/gi, "sb_[redacted]")
+    .replace(/eyJ[A-Za-z0-9._-]+/g, "eyJ[redacted]")
     .replace(/apikey['"]?\s*:\s*['"][^'"]+['"]/gi, "apikey: [redacted]")
     .slice(0, 500);
 }
@@ -119,7 +121,12 @@ async function saveContactSubmission(payload) {
     );
   }
 
-  const baseUrls = [normalizeSupabaseUrl(CONFIGURED_SUPABASE_URL).replace(/\/+$/, "")];
+  const normalizedSupabaseUrl = normalizeSupabaseUrl(CONFIGURED_SUPABASE_URL).replace(/\/+$/, "");
+  if (!/^https:\/\/[a-z0-9]+\.supabase\.co$/i.test(normalizedSupabaseUrl)) {
+    throw new Error("SUPABASE_URL must look like https://your-project-ref.supabase.co.");
+  }
+
+  const baseUrls = [normalizedSupabaseUrl];
   const apiKeys = [CONFIGURED_SUPABASE_KEY];
   const fullContactRow = {
     accepted_terms: payload.accepted_terms,
