@@ -2,9 +2,28 @@ const TO_EMAIL = process.env.CONTACT_TO_EMAIL || "1.coach.sarvesh@gmail.com";
 const FROM_EMAIL =
   process.env.RESEND_FROM_EMAIL || "Sarvesh Mopkar Website <onboarding@resend.dev>";
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || "";
-const SUPABASE_URL = process.env.SUPABASE_URL || "";
-const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
-const SUPABASE_CONTACT_TABLE = process.env.SUPABASE_CONTACT_TABLE || "contacts";
+function cleanEnv(value = "") {
+  return String(value).trim().replace(/^['"]|['"]$/g, "");
+}
+
+const FALLBACK_SUPABASE_URL = "https://hpophjjgsbjwjhwmcjbb.supabase.co";
+const FALLBACK_SUPABASE_PUBLISHABLE_KEY = "sb_publishable_HPkVYL67MCDrgeKgdakGyg_Zheujw6G";
+const SUPABASE_URL = cleanEnv(
+  process.env.SUPABASE_URL ||
+    process.env.NEXT_PUBLIC_SUPABASE_URL ||
+    process.env.VITE_SUPABASE_URL ||
+    FALLBACK_SUPABASE_URL
+);
+const SUPABASE_SERVICE_ROLE_KEY = cleanEnv(
+  process.env.SUPABASE_SERVICE_ROLE_KEY ||
+    process.env.SUPABASE_SERVICE_KEY ||
+    process.env.SUPABASE_SECRET_KEY ||
+    process.env.SUPABASE_ANON_KEY ||
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+    process.env.VITE_SUPABASE_ANON_KEY ||
+    FALLBACK_SUPABASE_PUBLISHABLE_KEY
+);
+const SUPABASE_CONTACT_TABLE = cleanEnv(process.env.SUPABASE_CONTACT_TABLE) || "contacts";
 const RATE_LIMIT_WINDOW_MS = 60 * 1000;
 const RATE_LIMIT_MAX = 3;
 const rateLimitStore = new Map();
