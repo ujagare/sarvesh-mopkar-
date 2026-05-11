@@ -349,35 +349,6 @@ function setupContactForm() {
     }, type === "pending" ? 1800 : 5200);
   };
 
-  const saveContactFallback = async (payload) => {
-    if (payload.company || !payload.terms) return false;
-
-    const supabaseUrl = "https://hpophjjgsbjwjhwmcjbb.supabase.co";
-    const supabaseKey =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhwb3Boampnc2Jqd2pod21jamJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NDg1MzcsImV4cCI6MjA4NzUyNDUzN30.ZOHFTFRgLp5m6XRVH36nybkQDtehCmwluoPDYyofFmA";
-
-    const response = await fetch(`${supabaseUrl}/rest/v1/contact_submissions`, {
-      method: "POST",
-      headers: {
-        apikey: supabaseKey,
-        Authorization: `Bearer ${supabaseKey}`,
-        "Content-Type": "application/json",
-        Prefer: "return=minimal",
-      },
-      body: JSON.stringify({
-        name: payload.name,
-        email: payload.email,
-        subject: payload.subject || "Website enquiry",
-        message: payload.message,
-        accepted_terms: true,
-        source: "website-contact-form-fallback",
-        user_agent: navigator.userAgent,
-      }),
-    });
-
-    return response.ok;
-  };
-
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
@@ -416,24 +387,16 @@ function setupContactForm() {
         throw new Error(result.message || "Something went wrong. Please try again.");
       }
 
-      if (result.saved === false) {
-        await saveContactFallback(payload).catch(() => false);
-      }
-
       form.reset();
       const successMessage =
         result.message || "Thank you. Your message has been sent successfully.";
       setStatus(successMessage, "success");
       showToast(successMessage, "success");
     } catch (error) {
-      const savedFallback = await saveContactFallback(payload).catch(() => false);
-      const errorMessage = savedFallback
-        ? "Your enquiry has been saved. Confirmation email is temporarily unavailable."
-        : error.message || "Could not send your message. Please try again.";
-      const state = savedFallback ? "success" : "error";
-      if (savedFallback) form.reset();
-      setStatus(errorMessage, state);
-      showToast(errorMessage, state);
+      const errorMessage =
+        error.message || "Could not send your message. Please try again.";
+      setStatus(errorMessage, "error");
+      showToast(errorMessage, "error");
     } finally {
       if (submitButton) submitButton.disabled = false;
       if (buttonLabel) buttonLabel.textContent = defaultButtonText;

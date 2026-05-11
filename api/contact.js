@@ -4,15 +4,7 @@ const FROM_EMAIL =
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || "";
 const SUPABASE_URL = process.env.SUPABASE_URL || "";
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
-const SUPABASE_CONTACT_TABLE = process.env.SUPABASE_CONTACT_TABLE || "contact_submissions";
-const SUPABASE_FALLBACK_URL =
-  process.env.SUPABASE_FALLBACK_URL || "https://hpophjjgsbjwjhwmcjbb.supabase.co";
-const SUPABASE_FALLBACK_KEY =
-  process.env.SUPABASE_FALLBACK_KEY ||
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhwb3Boampnc2Jqd2pod21jamJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NDg1MzcsImV4cCI6MjA4NzUyNDUzN30.ZOHFTFRgLp5m6XRVH36nybkQDtehCmwluoPDYyofFmA";
-const SUPABASE_BUILTIN_FALLBACK_URL = "https://hpophjjgsbjwjhwmcjbb.supabase.co";
-const SUPABASE_BUILTIN_FALLBACK_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhwb3Boampnc2Jqd2pod21jamJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NDg1MzcsImV4cCI6MjA4NzUyNDUzN30.ZOHFTFRgLp5m6XRVH36nybkQDtehCmwluoPDYyofFmA";
+const SUPABASE_CONTACT_TABLE = process.env.SUPABASE_CONTACT_TABLE || "contacts";
 const RATE_LIMIT_WINDOW_MS = 60 * 1000;
 const RATE_LIMIT_MAX = 3;
 const rateLimitStore = new Map();
@@ -88,71 +80,33 @@ async function sendResendEmail(payload) {
 }
 
 async function saveContactSubmission(payload) {
-  const clients = [];
-
-  if (SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY) {
-    clients.push({
-      key: SUPABASE_SERVICE_ROLE_KEY,
-      table: SUPABASE_CONTACT_TABLE,
-      url: SUPABASE_URL,
-    });
-  }
-
-  if (SUPABASE_FALLBACK_URL && SUPABASE_FALLBACK_KEY) {
-    const isSameClient = clients.some(
-      (client) => client.url === SUPABASE_FALLBACK_URL && client.key === SUPABASE_FALLBACK_KEY
-    );
-
-    if (!isSameClient) {
-      clients.push({
-        key: SUPABASE_FALLBACK_KEY,
-        table: "contact_submissions",
-        url: SUPABASE_FALLBACK_URL,
-      });
-    }
-  }
-
-  const hasBuiltInFallback = clients.some(
-    (client) =>
-      client.url === SUPABASE_BUILTIN_FALLBACK_URL &&
-      client.key === SUPABASE_BUILTIN_FALLBACK_KEY
-  );
-
-  if (!hasBuiltInFallback) {
-    clients.push({
-      key: SUPABASE_BUILTIN_FALLBACK_KEY,
-      table: "contact_submissions",
-      url: SUPABASE_BUILTIN_FALLBACK_URL,
-    });
-  }
-
-  if (!clients.length) {
+  if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
     return { skipped: true };
   }
 
-  const errors = [];
+  const contactRow = {
+    email: payload.email,
+    message: payload.message,
+    name: payload.name,
+  };
 
-  for (const client of clients) {
-    const response = await fetch(`${client.url}/rest/v1/${client.table}`, {
-      method: "POST",
-      headers: {
-        apikey: client.key,
-        Authorization: `Bearer ${client.key}`,
-        "Content-Type": "application/json",
-        Prefer: "return=minimal",
-      },
-      body: JSON.stringify(payload),
-    });
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_CONTACT_TABLE}`, {
+    method: "POST",
+    headers: {
+      apikey: SUPABASE_SERVICE_ROLE_KEY,
+      Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
+      "Content-Type": "application/json",
+      Prefer: "return=minimal",
+    },
+    body: JSON.stringify(contactRow),
+  });
 
-    if (response.ok) {
-      return { skipped: false };
-    }
-
+  if (!response.ok) {
     const detail = await response.text().catch(() => "");
-    errors.push(`${client.url}/${client.table}: ${response.status} ${detail}`);
+    throw new Error(detail || "Supabase insert failed.");
   }
 
-  throw new Error(errors.join(" | ") || "Supabase insert failed.");
+  return { skipped: false, table: SUPABASE_CONTACT_TABLE };
 }
 
 module.exports = async function handler(req, res) {
