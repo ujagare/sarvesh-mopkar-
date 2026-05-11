@@ -148,6 +148,8 @@ const lenis =
   });
 
 if (lenis) {
+  window.lenis = lenis;
+
   const raf = (time) => {
     lenis.raf(time);
     requestAnimationFrame(raf);
@@ -155,6 +157,7 @@ if (lenis) {
 
   requestAnimationFrame(raf);
   lenis.on("scroll", setHeaderState);
+  window.dispatchEvent(new CustomEvent("lenis:ready", { detail: lenis }));
 }
 
 const observer = new IntersectionObserver(

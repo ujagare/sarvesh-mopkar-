@@ -4,6 +4,7 @@ const FROM_EMAIL =
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || "";
 const SUPABASE_URL = process.env.SUPABASE_URL || "";
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
+const SUPABASE_CONTACT_TABLE = process.env.SUPABASE_CONTACT_TABLE || "contact_submissions";
 const RATE_LIMIT_WINDOW_MS = 60 * 1000;
 const RATE_LIMIT_MAX = 3;
 const rateLimitStore = new Map();
@@ -83,7 +84,7 @@ async function saveContactSubmission(payload) {
     return { skipped: true };
   }
 
-  const response = await fetch(`${SUPABASE_URL}/rest/v1/contacts`, {
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_CONTACT_TABLE}`, {
     method: "POST",
     headers: {
       apikey: SUPABASE_SERVICE_ROLE_KEY,
@@ -170,6 +171,10 @@ module.exports = async function handler(req, res) {
       email,
       subject,
       message,
+      accepted_terms: acceptedTerms,
+      source: "website-contact-form",
+      user_agent: cleanText(req.headers["user-agent"] || "", 500),
+      ip_address: cleanText(clientIp, 120),
     });
   } catch (error) {
     console.error("Supabase contact submission failed:", error);
