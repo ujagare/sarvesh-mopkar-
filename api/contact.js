@@ -8,20 +8,18 @@ function cleanEnv(value = "") {
 
 const FALLBACK_SUPABASE_URL = "https://hpophjjgsbjwjhwmcjbb.supabase.co";
 const FALLBACK_SUPABASE_PUBLISHABLE_KEY = "sb_publishable_HPkVYL67MCDrgeKgdakGyg_Zheujw6G";
-const SUPABASE_URL = cleanEnv(
+const CONFIGURED_SUPABASE_URL = cleanEnv(
   process.env.SUPABASE_URL ||
     process.env.NEXT_PUBLIC_SUPABASE_URL ||
-    process.env.VITE_SUPABASE_URL ||
-    FALLBACK_SUPABASE_URL
+    process.env.VITE_SUPABASE_URL
 );
-const SUPABASE_SERVICE_ROLE_KEY = cleanEnv(
+const CONFIGURED_SUPABASE_KEY = cleanEnv(
   process.env.SUPABASE_SERVICE_ROLE_KEY ||
     process.env.SUPABASE_SERVICE_KEY ||
     process.env.SUPABASE_SECRET_KEY ||
     process.env.SUPABASE_ANON_KEY ||
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
-    process.env.VITE_SUPABASE_ANON_KEY ||
-    FALLBACK_SUPABASE_PUBLISHABLE_KEY
+    process.env.VITE_SUPABASE_ANON_KEY
 );
 const SUPABASE_CONTACT_TABLE = cleanEnv(process.env.SUPABASE_CONTACT_TABLE) || "contacts";
 const RATE_LIMIT_WINDOW_MS = 60 * 1000;
@@ -99,13 +97,12 @@ async function sendResendEmail(payload) {
 }
 
 async function saveContactSubmission(payload) {
-  if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
-    throw new Error(
-      "Supabase is not configured. Add SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY environment variables."
-    );
-  }
-
-  const baseUrl = SUPABASE_URL.replace(/\/+$/, "");
+  const baseUrls = Array.from(
+    new Set([CONFIGURED_SUPABASE_URL, FALLBACK_SUPABASE_URL].filter(Boolean))
+  ).map((url) => url.replace(/\/+$/, ""));
+  const apiKeys = Array.from(
+    new Set([CONFIGURED_SUPABASE_KEY, FALLBACK_SUPABASE_PUBLISHABLE_KEY].filter(Boolean))
+  );
   const fullContactRow = {
     accepted_terms: payload.accepted_terms,
     email: payload.email,
@@ -130,12 +127,12 @@ async function saveContactSubmission(payload) {
 
   const targetTables = Array.from(new Set([SUPABASE_CONTACT_TABLE, "contacts"]));
 
-  const postRow = async (tableName, row) => {
+  const postRow = async (baseUrl, apiKey, tableName, row) => {
     const response = await fetch(`${baseUrl}/rest/v1/${tableName}`, {
       method: "POST",
       headers: {
-        apikey: SUPABASE_SERVICE_ROLE_KEY,
-        Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
+        apikey: apiKey,
+        Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
         Prefer: "return=minimal",
       },
@@ -148,9 +145,9 @@ async function saveContactSubmission(payload) {
     throw new Error(detail || "Supabase insert failed.");
   };
 
-  const saveToTable = async (tableName) => {
+  const saveToTable = async (baseUrl, apiKey, tableName) => {
     try {
-      await postRow(tableName, fullContactRow);
+      await postRow(baseUrl, apiKey, tableName, fullContactRow);
     } catch (error) {
       const detail = String(error.message || "");
       const looksLikeMissingColumn =
@@ -161,7 +158,7 @@ async function saveContactSubmission(payload) {
       if (!looksLikeMissingColumn) throw error;
 
       try {
-        await postRow(tableName, basicContactRow);
+        await postRow(baseUrl, apiKey, tableName, basicContactRow);
       } catch (basicError) {
         const basicDetail = String(basicError.message || "");
         const subjectLooksMissing =
@@ -170,7 +167,7 @@ async function saveContactSubmission(payload) {
           basicDetail.toLowerCase().includes("subject");
 
         if (!subjectLooksMissing) throw basicError;
-        await postRow(tableName, minimalContactRow);
+        await postRow(baseUrl, apiKey, tableName, minimalContactRow);
       }
     }
   };
@@ -178,19 +175,26 @@ async function saveContactSubmission(payload) {
   const savedTables = [];
   const errors = [];
 
-  for (const tableName of targetTables) {
-    try {
-      await saveToTable(tableName);
-      savedTables.push(tableName);
-    } catch (error) {
-      errors.push(`${tableName}: ${error.message}`);
+  for (const baseUrl of baseUrls) {
+    for (const apiKey of apiKeys) {
+      for (const tableName of targetTables) {
+        try {
+          await saveToTable(baseUrl, apiKey, tableName);
+          savedTables.push(tableName);
+        } catch (error) {
+          errors.push(`${baseUrl}/${tableName}: ${error.message}`);
+        }
+      }
+
+      if (savedTables.length) {
+        return { tables: savedTables };
+      }
     }
   }
 
   if (!savedTables.length) {
     throw new Error(errors.join(" | ") || "Supabase insert failed.");
   }
-
   return { tables: savedTables };
 }
 
