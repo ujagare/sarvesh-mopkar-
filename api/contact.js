@@ -6,6 +6,24 @@ function cleanEnv(value = "") {
   return String(value).trim().replace(/^['"]|['"]$/g, "");
 }
 
+function normalizeSupabaseUrl(value = "") {
+  const cleaned = cleanEnv(value);
+  if (!cleaned) return "";
+  if (/^https?:\/\//i.test(cleaned)) return cleaned;
+  if (/^[a-z0-9]{20}$/i.test(cleaned)) {
+    return `https://${cleaned}.supabase.co`;
+  }
+  return cleaned;
+}
+
+function getPublicErrorMessage(error) {
+  const message = String(error?.message || "Supabase insert failed.");
+  return message
+    .replace(/Bearer\s+[A-Za-z0-9._-]+/gi, "Bearer [redacted]")
+    .replace(/apikey['"]?\s*:\s*['"][^'"]+['"]/gi, "apikey: [redacted]")
+    .slice(0, 500);
+}
+
 const CONFIGURED_SUPABASE_URL = cleanEnv(
   process.env.SUPABASE_URL ||
     process.env.NEXT_PUBLIC_SUPABASE_URL ||
@@ -101,7 +119,7 @@ async function saveContactSubmission(payload) {
     );
   }
 
-  const baseUrls = [CONFIGURED_SUPABASE_URL.replace(/\/+$/, "")];
+  const baseUrls = [normalizeSupabaseUrl(CONFIGURED_SUPABASE_URL).replace(/\/+$/, "")];
   const apiKeys = [CONFIGURED_SUPABASE_KEY];
   const fullContactRow = {
     accepted_terms: payload.accepted_terms,
@@ -274,6 +292,7 @@ module.exports = async function handler(req, res) {
     console.error("Supabase contact submission failed:", error);
     return sendJson(res, 502, {
       message: "Could not save your message right now. Please try again later.",
+      detail: getPublicErrorMessage(error),
     });
   }
 
