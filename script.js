@@ -354,7 +354,7 @@ function setupContactForm() {
 
     const supabaseUrl = "https://hpophjjgsbjwjhwmcjbb.supabase.co";
     const supabaseKey =
-      "sb_publishable_HPkVYL67MCDrgeKgdakGyg_Zheujw6G";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhwb3Boampnc2Jqd2pod21jamJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NDg1MzcsImV4cCI6MjA4NzUyNDUzN30.ZOHFTFRgLp5m6XRVH36nybkQDtehCmwluoPDYyofFmA";
 
     const response = await fetch(`${supabaseUrl}/rest/v1/contact_submissions`, {
       method: "POST",

@@ -9,9 +9,10 @@ const SUPABASE_FALLBACK_URL =
   process.env.SUPABASE_FALLBACK_URL || "https://hpophjjgsbjwjhwmcjbb.supabase.co";
 const SUPABASE_FALLBACK_KEY =
   process.env.SUPABASE_FALLBACK_KEY ||
-  "sb_publishable_HPkVYL67MCDrgeKgdakGyg_Zheujw6G";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhwb3Boampnc2Jqd2pod21jamJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NDg1MzcsImV4cCI6MjA4NzUyNDUzN30.ZOHFTFRgLp5m6XRVH36nybkQDtehCmwluoPDYyofFmA";
 const SUPABASE_BUILTIN_FALLBACK_URL = "https://hpophjjgsbjwjhwmcjbb.supabase.co";
-const SUPABASE_BUILTIN_FALLBACK_KEY = "sb_publishable_HPkVYL67MCDrgeKgdakGyg_Zheujw6G";
+const SUPABASE_BUILTIN_FALLBACK_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhwb3Boampnc2Jqd2pod21jamJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NDg1MzcsImV4cCI6MjA4NzUyNDUzN30.ZOHFTFRgLp5m6XRVH36nybkQDtehCmwluoPDYyofFmA";
 const RATE_LIMIT_WINDOW_MS = 60 * 1000;
 const RATE_LIMIT_MAX = 3;
 const rateLimitStore = new Map();
