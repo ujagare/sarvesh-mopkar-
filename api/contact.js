@@ -200,8 +200,10 @@ module.exports = async function handler(req, res) {
   const safeMessage = escapeHtml(message).replace(/\n/g, "<br />");
   const safeSubmittedAt = escapeHtml(submittedAt);
 
+  let savedToSupabase = false;
+
   try {
-    await saveContactSubmission({
+    const saveResult = await saveContactSubmission({
       name,
       email,
       subject,
@@ -211,11 +213,9 @@ module.exports = async function handler(req, res) {
       user_agent: cleanText(req.headers["user-agent"] || "", 500),
       ip_address: cleanText(clientIp, 120),
     });
+    savedToSupabase = !saveResult.skipped;
   } catch (error) {
     console.error("Supabase contact submission failed:", error);
-    return sendJson(res, 502, {
-      message: "Could not save your message right now. Please try again later.",
-    });
   }
 
   const adminText = [
@@ -297,6 +297,15 @@ module.exports = async function handler(req, res) {
   });
 
   if (!adminEmailResponse.ok) {
+    const detail = await adminEmailResponse.text().catch(() => "");
+    console.error("Admin email failed:", detail);
+
+    if (!savedToSupabase) {
+      return sendJson(res, 502, {
+        message: "Could not send or save your message right now. Please try again later.",
+      });
+    }
+
     return sendJson(res, 502, {
       message: "Could not send your message right now. Please try again later.",
     });
@@ -312,6 +321,9 @@ module.exports = async function handler(req, res) {
   });
 
   if (!autoReplyResponse.ok) {
+    const detail = await autoReplyResponse.text().catch(() => "");
+    console.error("Auto reply email failed:", detail);
+
     return sendJson(res, 200, {
       message:
         "Your message has been sent. The confirmation email could not be delivered, but we received your enquiry.",
