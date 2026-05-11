@@ -6,8 +6,6 @@ function cleanEnv(value = "") {
   return String(value).trim().replace(/^['"]|['"]$/g, "");
 }
 
-const FALLBACK_SUPABASE_URL = "https://hpophjjgsbjwjhwmcjbb.supabase.co";
-const FALLBACK_SUPABASE_PUBLISHABLE_KEY = "sb_publishable_HPkVYL67MCDrgeKgdakGyg_Zheujw6G";
 const CONFIGURED_SUPABASE_URL = cleanEnv(
   process.env.SUPABASE_URL ||
     process.env.NEXT_PUBLIC_SUPABASE_URL ||
@@ -97,12 +95,14 @@ async function sendResendEmail(payload) {
 }
 
 async function saveContactSubmission(payload) {
-  const baseUrls = Array.from(
-    new Set([CONFIGURED_SUPABASE_URL, FALLBACK_SUPABASE_URL].filter(Boolean))
-  ).map((url) => url.replace(/\/+$/, ""));
-  const apiKeys = Array.from(
-    new Set([CONFIGURED_SUPABASE_KEY, FALLBACK_SUPABASE_PUBLISHABLE_KEY].filter(Boolean))
-  );
+  if (!CONFIGURED_SUPABASE_URL || !CONFIGURED_SUPABASE_KEY) {
+    throw new Error(
+      "Supabase is not configured. Add SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY or SUPABASE_ANON_KEY environment variables."
+    );
+  }
+
+  const baseUrls = [CONFIGURED_SUPABASE_URL.replace(/\/+$/, "")];
+  const apiKeys = [CONFIGURED_SUPABASE_KEY];
   const fullContactRow = {
     accepted_terms: payload.accepted_terms,
     email: payload.email,
