@@ -10,6 +10,8 @@ const SUPABASE_FALLBACK_URL =
 const SUPABASE_FALLBACK_KEY =
   process.env.SUPABASE_FALLBACK_KEY ||
   "sb_publishable_HPkVYL67MCDrgeKgdakGyg_Zheujw6G";
+const SUPABASE_BUILTIN_FALLBACK_URL = "https://hpophjjgsbjwjhwmcjbb.supabase.co";
+const SUPABASE_BUILTIN_FALLBACK_KEY = "sb_publishable_HPkVYL67MCDrgeKgdakGyg_Zheujw6G";
 const RATE_LIMIT_WINDOW_MS = 60 * 1000;
 const RATE_LIMIT_MAX = 3;
 const rateLimitStore = new Map();
@@ -107,6 +109,20 @@ async function saveContactSubmission(payload) {
         url: SUPABASE_FALLBACK_URL,
       });
     }
+  }
+
+  const hasBuiltInFallback = clients.some(
+    (client) =>
+      client.url === SUPABASE_BUILTIN_FALLBACK_URL &&
+      client.key === SUPABASE_BUILTIN_FALLBACK_KEY
+  );
+
+  if (!hasBuiltInFallback) {
+    clients.push({
+      key: SUPABASE_BUILTIN_FALLBACK_KEY,
+      table: "contact_submissions",
+      url: SUPABASE_BUILTIN_FALLBACK_URL,
+    });
   }
 
   if (!clients.length) {
@@ -327,10 +343,12 @@ module.exports = async function handler(req, res) {
     return sendJson(res, 200, {
       message:
         "Your message has been sent. The confirmation email could not be delivered, but we received your enquiry.",
+      saved: savedToSupabase,
     });
   }
 
   return sendJson(res, 200, {
     message: "Thank you. Your message has been sent successfully.",
+    saved: savedToSupabase,
   });
 };

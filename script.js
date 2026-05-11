@@ -416,6 +416,10 @@ function setupContactForm() {
         throw new Error(result.message || "Something went wrong. Please try again.");
       }
 
+      if (result.saved === false) {
+        await saveContactFallback(payload).catch(() => false);
+      }
+
       form.reset();
       const successMessage =
         result.message || "Thank you. Your message has been sent successfully.";
