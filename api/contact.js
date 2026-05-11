@@ -109,8 +109,10 @@ async function saveContactSubmission(payload) {
     name: payload.name,
   };
 
-  const postRow = async (row) => {
-    const response = await fetch(`${baseUrl}/rest/v1/${SUPABASE_CONTACT_TABLE}`, {
+  const targetTables = Array.from(new Set([SUPABASE_CONTACT_TABLE, "contacts"]));
+
+  const postRow = async (tableName, row) => {
+    const response = await fetch(`${baseUrl}/rest/v1/${tableName}`, {
       method: "POST",
       headers: {
         apikey: SUPABASE_SERVICE_ROLE_KEY,
@@ -127,32 +129,50 @@ async function saveContactSubmission(payload) {
     throw new Error(detail || "Supabase insert failed.");
   };
 
-  try {
-    await postRow(fullContactRow);
-  } catch (error) {
-    const detail = String(error.message || "");
-    const looksLikeMissingColumn =
-      detail.includes("PGRST204") ||
-      detail.toLowerCase().includes("schema cache") ||
-      detail.toLowerCase().includes("column");
-
-    if (!looksLikeMissingColumn) throw error;
-
+  const saveToTable = async (tableName) => {
     try {
-      await postRow(basicContactRow);
-    } catch (basicError) {
-      const basicDetail = String(basicError.message || "");
-      const subjectLooksMissing =
-        basicDetail.includes("PGRST204") ||
-        basicDetail.toLowerCase().includes("schema cache") ||
-        basicDetail.toLowerCase().includes("subject");
+      await postRow(tableName, fullContactRow);
+    } catch (error) {
+      const detail = String(error.message || "");
+      const looksLikeMissingColumn =
+        detail.includes("PGRST204") ||
+        detail.toLowerCase().includes("schema cache") ||
+        detail.toLowerCase().includes("column");
 
-      if (!subjectLooksMissing) throw basicError;
-      await postRow(minimalContactRow);
+      if (!looksLikeMissingColumn) throw error;
+
+      try {
+        await postRow(tableName, basicContactRow);
+      } catch (basicError) {
+        const basicDetail = String(basicError.message || "");
+        const subjectLooksMissing =
+          basicDetail.includes("PGRST204") ||
+          basicDetail.toLowerCase().includes("schema cache") ||
+          basicDetail.toLowerCase().includes("subject");
+
+        if (!subjectLooksMissing) throw basicError;
+        await postRow(tableName, minimalContactRow);
+      }
+    }
+  };
+
+  const savedTables = [];
+  const errors = [];
+
+  for (const tableName of targetTables) {
+    try {
+      await saveToTable(tableName);
+      savedTables.push(tableName);
+    } catch (error) {
+      errors.push(`${tableName}: ${error.message}`);
     }
   }
 
-  return { table: SUPABASE_CONTACT_TABLE };
+  if (!savedTables.length) {
+    throw new Error(errors.join(" | ") || "Supabase insert failed.");
+  }
+
+  return { tables: savedTables };
 }
 
 module.exports = async function handler(req, res) {
@@ -226,7 +246,7 @@ module.exports = async function handler(req, res) {
       user_agent: cleanText(req.headers["user-agent"] || "", 500),
       ip_address: cleanText(clientIp, 120),
     });
-    savedToSupabase = Boolean(saveResult.table);
+    savedToSupabase = Boolean(saveResult.tables?.length);
   } catch (error) {
     console.error("Supabase contact submission failed:", error);
     return sendJson(res, 502, {
@@ -325,14 +345,11 @@ module.exports = async function handler(req, res) {
     const detail = await adminEmailResponse.text().catch(() => "");
     console.error("Admin email failed:", detail);
 
-    if (!savedToSupabase) {
-      return sendJson(res, 502, {
-        message: "Could not send or save your message right now. Please try again later.",
-      });
-    }
-
-    return sendJson(res, 502, {
-      message: "Could not send your message right now. Please try again later.",
+    return sendJson(res, 200, {
+      message:
+        "Your message has been received. The email notification could not be delivered, but we saved your enquiry.",
+      saved: savedToSupabase,
+      emailed: false,
     });
   }
 
