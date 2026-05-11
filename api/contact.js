@@ -55,7 +55,7 @@ async function readBody(req) {
   const chunks = [];
 
   for await (const chunk of req) {
-    chunks.push(chunk);
+    chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
   }
 
   const rawBody = Buffer.concat(chunks).toString("utf8");
@@ -81,32 +81,78 @@ async function sendResendEmail(payload) {
 
 async function saveContactSubmission(payload) {
   if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
-    return { skipped: true };
+    throw new Error(
+      "Supabase is not configured. Add SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY environment variables."
+    );
   }
 
-  const contactRow = {
+  const baseUrl = SUPABASE_URL.replace(/\/+$/, "");
+  const fullContactRow = {
+    accepted_terms: payload.accepted_terms,
+    email: payload.email,
+    ip_address: payload.ip_address,
+    message: payload.message,
+    name: payload.name,
+    source: payload.source,
+    subject: payload.subject,
+    user_agent: payload.user_agent,
+  };
+  const basicContactRow = {
+    email: payload.email,
+    message: payload.message,
+    name: payload.name,
+    subject: payload.subject,
+  };
+  const minimalContactRow = {
     email: payload.email,
     message: payload.message,
     name: payload.name,
   };
 
-  const response = await fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_CONTACT_TABLE}`, {
-    method: "POST",
-    headers: {
-      apikey: SUPABASE_SERVICE_ROLE_KEY,
-      Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
-      "Content-Type": "application/json",
-      Prefer: "return=minimal",
-    },
-    body: JSON.stringify(contactRow),
-  });
+  const postRow = async (row) => {
+    const response = await fetch(`${baseUrl}/rest/v1/${SUPABASE_CONTACT_TABLE}`, {
+      method: "POST",
+      headers: {
+        apikey: SUPABASE_SERVICE_ROLE_KEY,
+        Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
+        "Content-Type": "application/json",
+        Prefer: "return=minimal",
+      },
+      body: JSON.stringify(row),
+    });
 
-  if (!response.ok) {
+    if (response.ok) return;
+
     const detail = await response.text().catch(() => "");
     throw new Error(detail || "Supabase insert failed.");
+  };
+
+  try {
+    await postRow(fullContactRow);
+  } catch (error) {
+    const detail = String(error.message || "");
+    const looksLikeMissingColumn =
+      detail.includes("PGRST204") ||
+      detail.toLowerCase().includes("schema cache") ||
+      detail.toLowerCase().includes("column");
+
+    if (!looksLikeMissingColumn) throw error;
+
+    try {
+      await postRow(basicContactRow);
+    } catch (basicError) {
+      const basicDetail = String(basicError.message || "");
+      const subjectLooksMissing =
+        basicDetail.includes("PGRST204") ||
+        basicDetail.toLowerCase().includes("schema cache") ||
+        basicDetail.toLowerCase().includes("subject");
+
+      if (!subjectLooksMissing) throw basicError;
+      await postRow(minimalContactRow);
+    }
   }
 
-  return { skipped: false, table: SUPABASE_CONTACT_TABLE };
+  return { table: SUPABASE_CONTACT_TABLE };
 }
 
 module.exports = async function handler(req, res) {
@@ -120,10 +166,6 @@ module.exports = async function handler(req, res) {
     if (origin !== ALLOWED_ORIGIN) {
       return sendJson(res, 403, { message: "This request is not allowed." });
     }
-  }
-
-  if (!process.env.RESEND_API_KEY) {
-    return sendJson(res, 500, { message: "Email service is not configured." });
   }
 
   const clientIp = getClientIp(req);
@@ -184,9 +226,12 @@ module.exports = async function handler(req, res) {
       user_agent: cleanText(req.headers["user-agent"] || "", 500),
       ip_address: cleanText(clientIp, 120),
     });
-    savedToSupabase = !saveResult.skipped;
+    savedToSupabase = Boolean(saveResult.table);
   } catch (error) {
     console.error("Supabase contact submission failed:", error);
+    return sendJson(res, 502, {
+      message: "Could not save your message right now. Please try again later.",
+    });
   }
 
   const adminText = [
@@ -257,6 +302,15 @@ module.exports = async function handler(req, res) {
       </div>
       <p style="margin:22px 0 0">Warmly,<br />Sarvesh Mopkar</p>
     ${emailShellEnd}`;
+
+  if (!process.env.RESEND_API_KEY) {
+    console.warn("Resend email skipped: RESEND_API_KEY is not configured.");
+    return sendJson(res, 200, {
+      message: "Thank you. Your message has been received successfully.",
+      saved: savedToSupabase,
+      emailed: false,
+    });
+  }
 
   const adminEmailResponse = await sendResendEmail({
     from: FROM_EMAIL,
