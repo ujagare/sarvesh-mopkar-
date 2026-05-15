@@ -1,4 +1,4 @@
-const TO_EMAIL = process.env.CONTACT_TO_EMAIL || "coach@sarveshmopkar.co";
+const TO_EMAIL = "coach@sarveshmopkar.co";
 const FROM_EMAIL =
   process.env.RESEND_FROM_EMAIL || "Sarvesh Mopkar Website <onboarding@resend.dev>";
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || "";
@@ -161,6 +161,7 @@ async function saveContactSubmission(payload) {
     ip_address: payload.ip_address,
     message: payload.message,
     name: payload.name,
+    phone: payload.phone,
     source: payload.source,
     subject: payload.subject,
     user_agent: payload.user_agent,
@@ -169,6 +170,7 @@ async function saveContactSubmission(payload) {
     email: payload.email,
     message: payload.message,
     name: payload.name,
+    phone: payload.phone,
     subject: payload.subject,
   };
   const minimalContactRow = {
@@ -277,6 +279,7 @@ module.exports = async function handler(req, res) {
 
   const name = cleanText(body.name, 120);
   const email = cleanText(body.email, 180).toLowerCase();
+  const phone = cleanText(body.phone, 40);
   const subject = cleanText(body.subject, 160) || "Website enquiry";
   const message = cleanText(body.message, 4000);
   const acceptedTerms = Boolean(body.terms);
@@ -286,9 +289,9 @@ module.exports = async function handler(req, res) {
     return sendJson(res, 200, { message: "Message received." });
   }
 
-  if (!name || !email || !message || !acceptedTerms) {
+  if (!name || !email || !phone || !message || !acceptedTerms) {
     return sendJson(res, 400, {
-      message: "Please fill name, email, message, and accept the policy.",
+      message: "Please fill name, email, mobile number, message, and accept the policy.",
     });
   }
 
@@ -304,6 +307,7 @@ module.exports = async function handler(req, res) {
 
   const safeName = escapeHtml(name);
   const safeEmail = escapeHtml(email);
+  const safePhone = escapeHtml(phone);
   const safeSubject = escapeHtml(subject);
   const safeMessage = escapeHtml(message).replace(/\n/g, "<br />");
   const safeSubmittedAt = escapeHtml(submittedAt);
@@ -314,6 +318,7 @@ module.exports = async function handler(req, res) {
     const saveResult = await saveContactSubmission({
       name,
       email,
+      phone,
       subject,
       message,
       accepted_terms: acceptedTerms,
@@ -335,6 +340,7 @@ module.exports = async function handler(req, res) {
     "",
     `Name: ${name}`,
     `Email: ${email}`,
+    `Mobile: ${phone}`,
     `Subject: ${subject}`,
     `Submitted: ${submittedAt}`,
     "",
@@ -380,6 +386,7 @@ module.exports = async function handler(req, res) {
       <div style="display:grid;gap:10px;margin-bottom:22px">
         <p style="margin:0"><strong>Name:</strong> ${safeName}</p>
         <p style="margin:0"><strong>Email:</strong> <a style="color:#b67811" href="mailto:${safeEmail}">${safeEmail}</a></p>
+        <p style="margin:0"><strong>Mobile:</strong> ${safePhone}</p>
         <p style="margin:0"><strong>Subject:</strong> ${safeSubject}</p>
         <p style="margin:0"><strong>Submitted:</strong> ${safeSubmittedAt}</p>
       </div>

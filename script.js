@@ -361,6 +361,7 @@ function setupContactForm() {
     const payload = {
       name: formData.get("name"),
       email: formData.get("email"),
+      phone: formData.get("phone"),
       subject: formData.get("subject"),
       message: formData.get("message"),
       company: formData.get("company"),
