@@ -1,6 +1,6 @@
 const TO_EMAIL = "coach@sarveshmopkar.co";
 const FROM_EMAIL =
-  process.env.RESEND_FROM_EMAIL || "Sarvesh Mopkar Website <onboarding@resend.dev>";
+  process.env.RESEND_FROM_EMAIL || "Sarvesh Mopkar Website <noreply@sarveshmopkar.co>";
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || "";
 function cleanEnv(value = "") {
   return String(value).trim().replace(/^['"]|['"]$/g, "");
