@@ -3,15 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Google Tag Manager -->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-TPM547S9');
-    </script>
-    <!-- End Google Tag Manager -->
+    <!-- Google Tag Manager (Delayed) -->
+<script>
+(function() {
+  function loadGTM() {
+    if (window._gtmLoaded) return;
+    window._gtmLoaded = true;
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TPM547S9');
+  }
+  // Load GTM after user interaction OR after 3s, whichever comes first
+  var loaded = false;
+  function onInteract() {
+    if (!loaded) { loaded = true; setTimeout(loadGTM, 0); }
+    document.removeEventListener('mousemove', onInteract);
+    document.removeEventListener('keydown', onInteract);
+    document.removeEventListener('touchstart', onInteract);
+    document.removeEventListener('scroll', onInteract);
+  }
+  document.addEventListener('mousemove', onInteract, {passive: true});
+  document.addEventListener('keydown', onInteract, {passive: true});
+  document.addEventListener('touchstart', onInteract, {passive: true});
+  document.addEventListener('scroll', onInteract, {passive: true});
+  setTimeout(loadGTM, 3000);
+})();
+</script>
+<!-- End Google Tag Manager (Delayed) -->
     <title>About | Sarvesh Mopkar</title>
     <meta
       name="description"
@@ -28,8 +48,10 @@
       href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="style.css"></noscript>
     <link rel="stylesheet" href="about.css" />
+    <link rel="stylesheet" href="fixes.css" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4GW23EDRQK"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -85,7 +107,8 @@
   <meta name="twitter:description" content="Sarvesh Mopkar is a trader, investor and abundance consciousness coach integrating trading psychology, subconscious reprogramming and nervous system calibration.">
   <meta name="twitter:image" content="https://www.sarveshmopkar.co/images/home/sarvesh-mopkar-logo.webp" />
   <link rel="canonical" href="https://www.sarveshmopkar.co/about.html" />
-  </head>
+  <link rel="preload" as="image" href="images/home/sarvesh-mopkar-logo.webp" fetchpriority="high">
+</head>
   <body class="about-page">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TPM547S9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -167,7 +190,7 @@
           </div>
           <div class="about-hero__visual reveal">
             <div class="about-hero__image-wrapper">
-              <img src="images/home/spiritual-finance-coaching-sanctuary.webp" alt="Warm interior sanctuary" loading="lazy" />
+              <img src="images/home/spiritual-finance-coaching-sanctuary.webp" alt="Warm interior sanctuary" loading="lazy" / width="776" height="388">
             </div>
           </div>
         </div>
@@ -178,21 +201,21 @@
         <ul class="about-container highlight-strip__grid">
           <li class="highlight-item reveal">
             <div class="highlight-icon">
-              <img src="images/About/icons/sarvesh-mopkar-about-07.webp" alt="Consciousness and strategy icon" loading="lazy" />
+              <img src="images/About/icons/sarvesh-mopkar-about-07.webp" alt="Consciousness and strategy icon" loading="lazy" / width="500" height="500">
             </div>
             <p>I work at the intersection of consciousness and strategy.</p>
           </li>
           <li class="highlight-divider"></li>
           <li class="highlight-item reveal">
             <div class="highlight-icon">
-              <img src="images/home/icon/icon-trading-strategy-discipline.webp" alt="Icon" loading="lazy" />
+              <img src="images/home/icon/icon-trading-strategy-discipline.webp" alt="Icon" loading="lazy" / width="60" height="53">
             </div>
             <p>I blend deep inner work with real-world execution.</p>
           </li>
           <li class="highlight-divider"></li>
           <li class="highlight-item reveal">
             <div class="highlight-icon">
-              <img src="images/home/icon/icon-energy-alignment-coach.webp" alt="Icon" loading="lazy" />
+              <img src="images/home/icon/icon-energy-alignment-coach.webp" alt="Icon" loading="lazy" / width="108" height="108">
             </div>
             <p>I help you expand capacity and create lasting wealth.</p>
           </li>
@@ -211,28 +234,28 @@
           <ul class="who-i-am__grid">
             <li class="who-i-am__card reveal">
               <div class="who-i-am__icon">
-                <img src="images/home/icon/icon-identity-wealth-expansion.webp" alt="Experience" loading="lazy" />
+                <img src="images/home/icon/icon-identity-wealth-expansion.webp" alt="Experience" loading="lazy" / width="108" height="108">
               </div>
               <h3>EXPERIENCE</h3>
               <p>Years of experience in financial markets, trading, and investment strategies across multiple cycles.</p>
             </li>
             <li class="who-i-am__card reveal">
               <div class="who-i-am__icon">
-                <img src="images/home/icon/icon-clarity-spiritual-finance.webp" alt="Mindset" loading="lazy" />
+                <img src="images/home/icon/icon-clarity-spiritual-finance.webp" alt="Mindset" loading="lazy" / width="105" height="108">
               </div>
               <h3>MINDSET MASTERY</h3>
               <p>Deep study and application of human psychology, behavior patterns, and subconscious reprogramming.</p>
             </li>
             <li class="who-i-am__card reveal">
               <div class="who-i-am__icon">
-                <img src="images/home/icon/icon-nervous-system-income.webp" alt="Energy" loading="lazy" />
+                <img src="images/home/icon/icon-nervous-system-income.webp" alt="Energy" loading="lazy" / width="108" height="108">
               </div>
               <h3>ENERGY & ALIGNMENT</h3>
               <p>Work with the nervous system, energetics, and identity to create internal stability and outer abundance.</p>
             </li>
             <li class="who-i-am__card reveal">
               <div class="who-i-am__icon">
-                <img src="images/home/icon/icon-transformation-abundance.webp" alt="Results" loading="lazy" />
+                <img src="images/home/icon/icon-transformation-abundance.webp" alt="Results" loading="lazy" / width="102" height="108">
               </div>
               <h3>REAL-WORLD RESULTS</h3>
               <p>Proven frameworks that help individuals create predictable results and aligned wealth expansion.</p>
@@ -255,7 +278,7 @@
           </div>
           <div class="journey__visual reveal">
             <div class="journey-image-wrap">
-              <img src="images/About/sarvesh-mopkar-about-06.webp" alt="Trading desk with sunrise and meditation elements" loading="lazy" />
+              <img src="images/About/sarvesh-mopkar-about-06.webp" alt="Trading desk with sunrise and meditation elements" loading="lazy" / width="1774" height="887">
             </div>
           </div>
         </div>
@@ -296,7 +319,7 @@
       <!-- 6. PHILOSOPHY SECTION -->
       <section class="philosophy-section">
         <div class="philosophy-bg-image">
-          <img src="images/About/sarvesh-mopkar-about-04.webp" alt="Philosophy background" loading="lazy" />
+          <img src="images/About/sarvesh-mopkar-about-04.webp" alt="Philosophy background" loading="lazy" / width="1855" height="848">
           <div class="philosophy-overlay"></div>
         </div>
         <div class="about-container philosophy-section__grid">
@@ -317,7 +340,7 @@
           </div>
           <div class="philosophy-section__visual reveal">
             <div class="floating-lotus">
-              <img src="images/home/icon/icon-energy-alignment-coach.webp" alt="Lotus symbol" loading="lazy" />
+              <img src="images/home/icon/icon-energy-alignment-coach.webp" alt="Lotus symbol" loading="lazy" / width="108" height="108">
               <div class="lotus-glow"></div>
             </div>
           </div>
@@ -332,19 +355,19 @@
         <ul class="about-container personal-note__grid">
           <li class="note-item reveal">
             <div class="note-icon">
-              <img src="images/home/icon/icon-identity-wealth-expansion.webp" alt="Icon" loading="lazy" />
+              <img src="images/home/icon/icon-identity-wealth-expansion.webp" alt="Icon" loading="lazy" / width="108" height="108">
             </div>
             <p>My work is also influenced by deeper explorations.</p>
           </li>
           <li class="note-item reveal">
             <div class="note-icon">
-              <img src="images/home/icon/icon-nervous-system-income.webp" alt="Icon" loading="lazy" />
+              <img src="images/home/icon/icon-nervous-system-income.webp" alt="Icon" loading="lazy" / width="108" height="108">
             </div>
             <p>Consciousness practices, energy work, and embodied awareness.</p>
           </li>
           <li class="note-item reveal">
             <div class="note-icon">
-              <img src="images/home/icon/icon-transformation-abundance.webp" alt="Icon" loading="lazy" />
+              <img src="images/home/icon/icon-transformation-abundance.webp" alt="Icon" loading="lazy" / width="102" height="108">
             </div>
             <p>Not as belief systems&mdash;but as tools for precision and transformation.</p>
           </li>
@@ -354,7 +377,7 @@
       <!-- 8. CTA SECTION -->
       <section class="about-cta">
         <div class="about-cta__bg">
-          <img src="images/About/sarvesh-mopkar-about-05.webp" alt="Mountain sunrise invitation" loading="lazy" />
+          <img src="images/About/sarvesh-mopkar-about-05.webp" alt="Mountain sunrise invitation" loading="lazy" / width="1920" height="767">
           <div class="about-overlay-dark"></div>
         </div>
         <div class="about-container about-cta__content reveal">
@@ -373,13 +396,12 @@
       <div class="container footer__grid">
         <div class="footer__brand">
           <a class="brand" href="#top">
-            <img
-              class="brand__mark"
+            <img               class="brand__mark"
               src="images/home/sarvesh-mopkar-logo.webp"
               alt="Sarvesh M Logo"
               loading="lazy"
               decoding="async"
-            />
+            / width="200" height="174">
           </a>
           <p>Wealth. Consciousness. Alignment.</p>
           <div class="footer__socials" aria-label="Social links">

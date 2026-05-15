@@ -3,15 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Google Tag Manager -->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-TPM547S9');
-    </script>
-    <!-- End Google Tag Manager -->
+    <!-- Google Tag Manager (Delayed) -->
+<script>
+(function() {
+  function loadGTM() {
+    if (window._gtmLoaded) return;
+    window._gtmLoaded = true;
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TPM547S9');
+  }
+  // Load GTM after user interaction OR after 3s, whichever comes first
+  var loaded = false;
+  function onInteract() {
+    if (!loaded) { loaded = true; setTimeout(loadGTM, 0); }
+    document.removeEventListener('mousemove', onInteract);
+    document.removeEventListener('keydown', onInteract);
+    document.removeEventListener('touchstart', onInteract);
+    document.removeEventListener('scroll', onInteract);
+  }
+  document.addEventListener('mousemove', onInteract, {passive: true});
+  document.addEventListener('keydown', onInteract, {passive: true});
+  document.addEventListener('touchstart', onInteract, {passive: true});
+  document.addEventListener('scroll', onInteract, {passive: true});
+  setTimeout(loadGTM, 3000);
+})();
+</script>
+<!-- End Google Tag Manager (Delayed) -->
     <title>The Work | Sarvesh Mopkar</title>
     <meta
       name="description"
@@ -42,7 +62,9 @@
       href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="style.css"></noscript>
+    <link rel="stylesheet" href="fixes.css" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4GW23EDRQK"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -121,6 +143,7 @@
   <meta name="twitter:description" content="Explore Kuber Consciousness, Millionaire Trader Mentorship, 1:1 Deep Work and Energy Sessions with Sarvesh Mopkar.">
   <meta name="twitter:image" content="https://www.sarveshmopkar.co/images/home/sarvesh-mopkar-logo.webp" />
   <link rel="canonical" href="https://www.sarveshmopkar.co/work.html" />
+<link rel="preload" as="image" href="images/home/sarvesh-mopkar-logo.webp" fetchpriority="high">
 </head>
   <body class="work-page">
     <!-- Google Tag Manager (noscript) -->
@@ -311,11 +334,10 @@
 
             <ul class="work-overview__grid">
               <li class="work-overview__item reveal">
-                <img
-                  src="images/home/icon/icon-clarity-spiritual-finance.webp"
+                <img                   src="images/home/icon/icon-clarity-spiritual-finance.webp"
                   alt="Mind icon"
                   loading="lazy"
-                />
+                / width="105" height="108">
                 <h3>Mind</h3>
                 <p>
                   Rewire beliefs, thought patterns, and identity at the
@@ -323,11 +345,10 @@
                 </p>
               </li>
               <li class="work-overview__item reveal">
-                <img
-                  src="images/home/icon/icon-identity-wealth-expansion.webp"
+                <img                   src="images/home/icon/icon-identity-wealth-expansion.webp"
                   alt="Body icon"
                   loading="lazy"
-                />
+                / width="108" height="108">
                 <h3>Body</h3>
                 <p>
                   Regulate your nervous system and build emotional resilience
@@ -335,11 +356,10 @@
                 </p>
               </li>
               <li class="work-overview__item reveal">
-                <img
-                  src="images/home/icon/icon-trading-strategy-discipline.webp"
+                <img                   src="images/home/icon/icon-trading-strategy-discipline.webp"
                   alt="Strategy icon"
                   loading="lazy"
-                />
+                / width="60" height="53">
                 <h3>Strategy</h3>
                 <p>
                   Make clear, confident, data-informed decisions in the markets
@@ -347,11 +367,10 @@
                 </p>
               </li>
               <li class="work-overview__item reveal">
-                <img
-                  src="images/home/icon/icon-nervous-system-income.webp"
+                <img                   src="images/home/icon/icon-nervous-system-income.webp"
                   alt="Energy icon"
                   loading="lazy"
-                />
+                / width="108" height="108">
                 <h3>Energy</h3>
                 <p>
                   Align your energy, expand capacity, and create from a place of
@@ -359,11 +378,10 @@
                 </p>
               </li>
               <li class="work-overview__item reveal">
-                <img
-                  src="images/home/icon/icon-energy-alignment-coach.webp"
+                <img                   src="images/home/icon/icon-energy-alignment-coach.webp"
                   alt="Results icon"
                   loading="lazy"
-                />
+                / width="108" height="108">
                 <h3>Results</h3>
                 <p>
                   Sustainable wealth, freedom, and impact without sacrificing
@@ -386,11 +404,10 @@
               <li class="work-card reveal">
                 <article>
                   <div class="work-card__image">
-                    <img
-                      src="images/The Work/sarvesh-mopkar-the-work-03.webp"
+                    <img                       src="images/The Work/sarvesh-mopkar-the-work-03.webp"
                       alt="Trading desk in golden light"
                       loading="lazy"
-                    />
+                    / width="1672" height="941">
                     <span>01</span>
                   </div>
                   <div class="work-card__body">
@@ -416,11 +433,10 @@
               <li class="work-card reveal">
                 <article>
                   <div class="work-card__image">
-                    <img
-                      src="images/The Work/sarvesh-mopkar-the-work-04.webp"
+                    <img                       src="images/The Work/sarvesh-mopkar-the-work-04.webp"
                       alt="Mentorship room overlooking mountains"
                       loading="lazy"
-                    />
+                    / width="1672" height="941">
                     <span>02</span>
                   </div>
                   <div class="work-card__body">
@@ -447,11 +463,10 @@
               <li class="work-card reveal">
                 <article>
                   <div class="work-card__image">
-                    <img
-                      src="images/The Work/sarvesh-mopkar-the-work-05.webp"
+                    <img                       src="images/The Work/sarvesh-mopkar-the-work-05.webp"
                       alt="Energy work session room"
                       loading="lazy"
-                    />
+                    / width="1672" height="941">
                     <span>03</span>
                   </div>
                   <div class="work-card__body">
@@ -489,11 +504,10 @@
             </div>
             <ul class="work-process__grid">
               <li class="work-process__item reveal">
-                <img
-                  src="images/The Work/sarvesh-mopkar-the-work-06.webp"
+                <img                   src="images/The Work/sarvesh-mopkar-the-work-06.webp"
                   alt="Still mountain lake"
                   loading="lazy"
-                />
+                / width="500" height="500">
                 <h3>Awareness</h3>
                 <p>
                   We identify the patterns, blocks, and beliefs keeping you
@@ -502,11 +516,10 @@
               </li>
               <li class="work-process__arrow" aria-hidden="true">&rarr;</li>
               <li class="work-process__item reveal">
-                <img
-                  src="images/The Work/sarvesh-mopkar-the-work-07.webp"
+                <img                   src="images/The Work/sarvesh-mopkar-the-work-07.webp"
                   alt="Sunlit canyon"
                   loading="lazy"
-                />
+                / width="500" height="500">
                 <h3>Release</h3>
                 <p>
                   We release old stories, conditioning, and energetic imprints.
@@ -514,11 +527,10 @@
               </li>
               <li class="work-process__arrow" aria-hidden="true">&rarr;</li>
               <li class="work-process__item reveal">
-                <img
-                  src="images/The Work/sarvesh-mopkar-the-work-08.webp"
+                <img                   src="images/The Work/sarvesh-mopkar-the-work-08.webp"
                   alt="Meditation in the mountains"
                   loading="lazy"
-                />
+                / width="500" height="500">
                 <h3>Recalibration</h3>
                 <p>
                   We rewire your identity, regulate your system, and expand
@@ -527,11 +539,10 @@
               </li>
               <li class="work-process__arrow" aria-hidden="true">&rarr;</li>
               <li class="work-process__item reveal">
-                <img
-                  src="images/The Work/sarvesh-mopkar-the-work-09.webp"
+                <img                   src="images/The Work/sarvesh-mopkar-the-work-09.webp"
                   alt="Mountain peak"
                   loading="lazy"
-                />
+                / width="500" height="500">
                 <h3>Action</h3>
                 <p>
                   We align strategy, decisions, and execution for powerful
@@ -554,11 +565,10 @@
                   temporary.
                 </p>
               </div>
-              <img
-                src="images/The Work/sarvesh-mopkar-the-work-10.webp"
+              <img                 src="images/The Work/sarvesh-mopkar-the-work-10.webp"
                 alt="Man meditating on a mountain at sunrise"
                 loading="lazy"
-              />
+              / width="929" height="916">
             </article>
           </div>
         </section>
@@ -578,11 +588,10 @@
           "
         >
           <article class="work-container work-invite__inner reveal">
-            <img
-              src="images/The Work/sarvesh-mopkar-the-work-12.webp"
+            <img               src="images/The Work/sarvesh-mopkar-the-work-12.webp"
               alt="Vase and crystals"
               loading="lazy"
-            />
+            / width="612" height="408">
             <p>
               If you are ready to expand your capacity and create a life of
               freedom, impact, and abundance, I invite you to step in.
@@ -599,13 +608,12 @@
         <div class="container footer__grid">
           <div class="footer__brand">
             <a class="brand" href="#top">
-              <img
-                class="brand__mark"
+              <img                 class="brand__mark"
                 src="images/home/sarvesh-mopkar-logo.webp"
                 alt="Sarvesh M Logo"
                 loading="lazy"
                 decoding="async"
-              />
+              / width="200" height="174">
             </a>
             <p>Wealth. Consciousness. Alignment.</p>
             <div class="footer__socials" aria-label="Social links">

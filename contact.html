@@ -3,15 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Google Tag Manager -->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-TPM547S9');
-    </script>
-    <!-- End Google Tag Manager -->
+    <!-- Google Tag Manager (Delayed) -->
+<script>
+(function() {
+  function loadGTM() {
+    if (window._gtmLoaded) return;
+    window._gtmLoaded = true;
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TPM547S9');
+  }
+  // Load GTM after user interaction OR after 3s, whichever comes first
+  var loaded = false;
+  function onInteract() {
+    if (!loaded) { loaded = true; setTimeout(loadGTM, 0); }
+    document.removeEventListener('mousemove', onInteract);
+    document.removeEventListener('keydown', onInteract);
+    document.removeEventListener('touchstart', onInteract);
+    document.removeEventListener('scroll', onInteract);
+  }
+  document.addEventListener('mousemove', onInteract, {passive: true});
+  document.addEventListener('keydown', onInteract, {passive: true});
+  document.addEventListener('touchstart', onInteract, {passive: true});
+  document.addEventListener('scroll', onInteract, {passive: true});
+  setTimeout(loadGTM, 3000);
+})();
+</script>
+<!-- End Google Tag Manager (Delayed) -->
     <title>Contact | Sarvesh Mopkar</title>
     <meta
       name="description"
@@ -28,7 +48,9 @@
       href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="style.css"></noscript>
+    <link rel="stylesheet" href="fixes.css" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4GW23EDRQK"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -72,7 +94,8 @@
   <meta name="twitter:description" content="Ready to begin? Contact Sarvesh Mopkar for Kuber Consciousness, Trader Mentorship and 1:1 Deep Work sessions.">
   <meta name="twitter:image" content="https://www.sarveshmopkar.co/images/home/sarvesh-mopkar-logo.webp" />
   <link rel="canonical" href="https://www.sarveshmopkar.co/contact.html" />
-  </head>
+  <link rel="preload" as="image" href="images/home/sarvesh-mopkar-logo.webp" fetchpriority="high">
+</head>
   <body class="contact-page">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TPM547S9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -153,21 +176,21 @@
             <div class="contact-info-grid reveal">
               <article class="contact-info-card">
                 <span class="contact-info-card__icon">
-                  <img src="images/Contact/icons/sarvesh-mopkar-contact-04.webp" alt="Sarvesh Mopkar Contact 04" loading="lazy" decoding="async" />
+                  <img src="images/Contact/icons/sarvesh-mopkar-contact-04.webp" alt="Sarvesh Mopkar Contact 04" loading="lazy" decoding="async" / width="577" height="433">
                 </span>
                 <h2>Email</h2>
                 <p><a href="mailto:coach@sarveshmopkar.co">coach@sarveshmopkar.co</a><br /><a href="mailto:1.coach.sarvesh@gmail.com">1.coach.sarvesh@gmail.com</a><br />I usually reply within 24 hours.</p>
               </article>
               <article class="contact-info-card">
                 <span class="contact-info-card__icon">
-                  <img src="images/Contact/icons/sarvesh-mopkar-contact-05.webp" alt="Sarvesh Mopkar Contact 05" loading="lazy" decoding="async" />
+                  <img src="images/Contact/icons/sarvesh-mopkar-contact-05.webp" alt="Sarvesh Mopkar Contact 05" loading="lazy" decoding="async" / width="500" height="500">
                 </span>
                 <h2>WhatsApp</h2>
                 <p><a href="https://wa.me/919822243867" target="_blank" rel="noopener">+91-98222-43-867</a><br />For quick messages and inquiries.</p>
               </article>
               <article class="contact-info-card">
                 <span class="contact-info-card__icon">
-                  <img src="images/Contact/icons/sarvesh-mopkar-contact-06.webp" alt="Sarvesh Mopkar Contact 06" loading="lazy" decoding="async" />
+                  <img src="images/Contact/icons/sarvesh-mopkar-contact-06.webp" alt="Sarvesh Mopkar Contact 06" loading="lazy" decoding="async" / width="500" height="500">
                 </span>
                 <h2>Discovery Call</h2>
                 <p>Book a free clarity call to explore how we can work together.</p>
@@ -175,7 +198,7 @@
               </article>
               <article class="contact-info-card">
                 <span class="contact-info-card__icon contact-info-card__icon--pin">
-                  <img src="images/Contact/icons/sarvesh-mopkar-contact-07.webp" alt="Sarvesh Mopkar Contact 07" loading="lazy" decoding="async" />
+                  <img src="images/Contact/icons/sarvesh-mopkar-contact-07.webp" alt="Sarvesh Mopkar Contact 07" loading="lazy" decoding="async" / width="500" height="500">
                 </span>
                 <h2>Location</h2>
                 <p>Pune, India<br />(Work is available globally online)</p>
@@ -312,7 +335,7 @@
         <div class="container footer__grid">
           <div class="footer__brand">
             <a class="brand" href="index.html#home">
-              <img class="brand__mark" src="images/home/sarvesh-mopkar-logo.webp" alt="Sarvesh M Logo" loading="lazy" decoding="async" />
+              <img class="brand__mark" src="images/home/sarvesh-mopkar-logo.webp" alt="Sarvesh M Logo" loading="lazy" decoding="async" / width="200" height="174">
             </a>
             <p>Wealth. Consciousness. Alignment.</p>
             <div class="footer__socials" aria-label="Social links">

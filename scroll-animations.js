@@ -334,6 +334,8 @@
       "h1",
       "h2",
       "h3",
+      "h4",
+      "p",
       ".hero__copy",
       ".about-hero__text",
       ".work-hero p:not(.work-kicker)",
@@ -361,6 +363,7 @@
       if (el.dataset.saTextPrepared === "true") return false;
       if (!el.textContent.trim()) return false;
       if (el.closest("button, .btn, input, textarea, select")) return false;
+      if (el.closest(".site-header, .site-footer, .site-nav")) return false;
 
       const style = window.getComputedStyle(el);
       return style.display !== "none" && style.visibility !== "hidden";
@@ -426,10 +429,12 @@
       ".about-cta__bg img",
       ".wwm-card img",
       ".contact-service-card img",
+      "main img",
     ].join(", ");
 
     return Array.from((root || document).querySelectorAll(selector)).filter((el) => {
       if (el.dataset.saMediaAnimated === "true") return false;
+      if (el.closest(".site-header, .site-footer, .site-nav")) return false;
       const style = window.getComputedStyle(el);
       return style.display !== "none" && style.visibility !== "hidden";
     });

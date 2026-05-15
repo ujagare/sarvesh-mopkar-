@@ -3,15 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Google Tag Manager -->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-TPM547S9');
-    </script>
-    <!-- End Google Tag Manager -->
+    <!-- Google Tag Manager (Delayed) -->
+<script>
+(function() {
+  function loadGTM() {
+    if (window._gtmLoaded) return;
+    window._gtmLoaded = true;
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TPM547S9');
+  }
+  // Load GTM after user interaction OR after 3s, whichever comes first
+  var loaded = false;
+  function onInteract() {
+    if (!loaded) { loaded = true; setTimeout(loadGTM, 0); }
+    document.removeEventListener('mousemove', onInteract);
+    document.removeEventListener('keydown', onInteract);
+    document.removeEventListener('touchstart', onInteract);
+    document.removeEventListener('scroll', onInteract);
+  }
+  document.addEventListener('mousemove', onInteract, {passive: true});
+  document.addEventListener('keydown', onInteract, {passive: true});
+  document.addEventListener('touchstart', onInteract, {passive: true});
+  document.addEventListener('scroll', onInteract, {passive: true});
+  setTimeout(loadGTM, 3000);
+})();
+</script>
+<!-- End Google Tag Manager (Delayed) -->
     <title>
       Work With Me | Kuber Consciousness &amp; Coaching — Sarvesh Mopkar
     </title>
@@ -51,7 +71,9 @@
       href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="style.css"></noscript>
+    <link rel="stylesheet" href="fixes.css" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4GW23EDRQK"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -172,7 +194,8 @@
         }
       ]
     </script>
-  </head>
+  <link rel="preload" as="image" href="images/home/sarvesh-mopkar-logo.webp" fetchpriority="high">
+</head>
   <body class="work-with-me-page">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TPM547S9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -265,21 +288,19 @@
               id="kuber-consciousness"
             >
               <div class="wwm-card__image wwm-card__image--kuber">
-                <img
-                  src="images/Work with me/sarvesh-mopkar-kuber-consciousness-abundance.webp"
+                <img                   src="images/Work with me/sarvesh-mopkar-kuber-consciousness-abundance.webp"
                   alt="Golden abundance pot with coins"
                   loading="lazy"
                   decoding="async"
-                />
+                / width="1315" height="1197">
               </div>
               <div class="wwm-card__content">
                 <div class="wwm-card__heading">
                   <span class="wwm-card__icon">
-                    <img
-                      src="images/Work with me/icons/sarvesh-mopkar-philosophy-08.webp"
+                    <img                       src="images/Work with me/icons/sarvesh-mopkar-philosophy-08.webp"
                       alt="Kuber consciousness icon"
                       loading="lazy"
-                    />
+                    / width="323" height="276">
                   </span>
                   <h2>Kuber Consciousness <span>(Flagship)</span></h2>
                 </div>
@@ -303,32 +324,28 @@
               <aside class="wwm-card__aside">
                 <ul class="wwm-benefits">
                   <li>
-                    <img
-                      src="images/Work with me/icons/icon-inner-abundance-kuber-consciousness.webp"
+                    <img                       src="images/Work with me/icons/icon-inner-abundance-kuber-consciousness.webp"
                       alt="Inner abundance icon"
                       loading="lazy"
-                    />Inner abundance
+                    / width="500" height="500">Inner abundance
                   </li>
                   <li>
-                    <img
-                      src="images/Work with me/icons/sarvesh-mopkar-philosophy-10.webp"
+                    <img                       src="images/Work with me/icons/sarvesh-mopkar-philosophy-10.webp"
                       alt="Subconscious reprogramming icon"
                       loading="lazy"
-                    />Subconscious reprogramming
+                    / width="1024" height="1024">Subconscious reprogramming
                   </li>
                   <li>
-                    <img
-                      src="images/Work with me/icons/icon-wealth-alignment-abundance.webp"
+                    <img                       src="images/Work with me/icons/icon-wealth-alignment-abundance.webp"
                       alt="Wealth alignment icon"
                       loading="lazy"
-                    />Wealth alignment
+                    / width="500" height="500">Wealth alignment
                   </li>
                   <li>
-                    <img
-                      src="images/Work with me/icons/icon-expansion-flow-consciousness.webp"
+                    <img                       src="images/Work with me/icons/icon-expansion-flow-consciousness.webp"
                       alt="Expansion and flow icon"
                       loading="lazy"
-                    />Expansion &amp; flow
+                    / width="500" height="500">Expansion &amp; flow
                   </li>
                 </ul>
                 <a class="wwm-action" href="./contact.html#send-message"
@@ -344,11 +361,10 @@
               <div class="wwm-card__content">
                 <div class="wwm-card__heading">
                   <span class="wwm-card__icon">
-                    <img
-                      src="images/Work with me/icons/icon-trading-strategy-discipline.webp"
+                    <img                       src="images/Work with me/icons/icon-trading-strategy-discipline.webp"
                       alt="Trading strategy discipline icon"
                       loading="lazy"
-                    />
+                    / width="316" height="280">
                   </span>
                   <h2>Millionaire Trader<br />Mentorship</h2>
                 </div>
@@ -366,42 +382,37 @@
                 </p>
               </div>
               <div class="wwm-card__image">
-                <img
-                  src="images/Work with me/sarvesh-mopkar-millionaire-trader-mentorship.webp"
+                <img                   src="images/Work with me/sarvesh-mopkar-millionaire-trader-mentorship.webp"
                   alt="Bull statue in front of trading screens"
                   loading="lazy"
                   decoding="async"
-                />
+                / width="1254" height="1254">
               </div>
               <aside class="wwm-card__aside">
                 <ul class="wwm-benefits">
                   <li>
-                    <img
-                      src="images/Work with me/icons/icon-trading-psychology-mindset.webp"
+                    <img                       src="images/Work with me/icons/icon-trading-psychology-mindset.webp"
                       alt="Trading psychology icon"
                       loading="lazy"
-                    />Trading Psychology
+                    / width="500" height="500">Trading Psychology
                   </li>
                   <li>
-                    <img
-                      src="images/Work with me/icons/icon-risk-discipline-trader.webp"
+                    <img                       src="images/Work with me/icons/icon-risk-discipline-trader.webp"
                       alt="Risk discipline icon"
                       loading="lazy"
-                    />Risk Discipline
+                    / width="500" height="500">Risk Discipline
                   </li>
                   <li>
-                    <img
-                      src="images/Work with me/icons/icon-emotional-neutrality-trading.webp"
+                    <img                       src="images/Work with me/icons/icon-emotional-neutrality-trading.webp"
                       alt="Emotional neutrality icon"
                       loading="lazy"
-                    />Emotional Neutrality
+                    / width="500" height="500">Emotional Neutrality
                   </li>
                   <li>
-                    <img
-                      src="images/Work with me/icons/icon-structured-decisions-trader.webp"
+                    <img                       src="images/Work with me/icons/icon-structured-decisions-trader.webp"
                       alt="Structured decisions icon"
                       loading="lazy"
-                    />Structured Decisions
+                    / width="500" height="500">Structured Decisions
                   </li>
                 </ul>
                 <a class="wwm-action" href="./contact.html#send-message"
@@ -412,21 +423,19 @@
 
             <article class="wwm-card wwm-card--deep reveal" id="deep-work">
               <div class="wwm-card__image">
-                <img
-                  src="images/Work with me/sarvesh-mopkar-one-on-one-deep-work-transformation.webp"
+                <img                   src="images/Work with me/sarvesh-mopkar-one-on-one-deep-work-transformation.webp"
                   alt="Zen stones and candle with golden light"
                   loading="lazy"
                   decoding="async"
-                />
+                / width="1672" height="941">
               </div>
               <div class="wwm-card__content">
                 <div class="wwm-card__heading">
                   <span class="wwm-card__icon">
-                    <img
-                      src="images/Work with me/icons/icon-identity-shift-deep-work.webp"
+                    <img                       src="images/Work with me/icons/icon-identity-shift-deep-work.webp"
                       alt="Identity shift icon"
                       loading="lazy"
-                    />
+                    / width="500" height="500">
                   </span>
                   <h2>1:1 Deep Work</h2>
                 </div>
@@ -446,32 +455,28 @@
               <aside class="wwm-card__aside">
                 <ul class="wwm-benefits">
                   <li>
-                    <img
-                      src="images/Work with me/icons/icon-identity-shift-deep-work.webp"
+                    <img                       src="images/Work with me/icons/icon-identity-shift-deep-work.webp"
                       alt="Identity shift icon"
                       loading="lazy"
-                    />Identity Shifts
+                    / width="500" height="500">Identity Shifts
                   </li>
                   <li>
-                    <img
-                      src="images/Work with me/icons/icon-emotional-patterns-healing.webp"
+                    <img                       src="images/Work with me/icons/icon-emotional-patterns-healing.webp"
                       alt="Emotional patterns icon"
                       loading="lazy"
-                    />Emotional Patterns
+                    / width="500" height="500">Emotional Patterns
                   </li>
                   <li>
-                    <img
-                      src="images/Work with me/icons/icon-wealth-ceiling-breakthrough.webp"
+                    <img                       src="images/Work with me/icons/icon-wealth-ceiling-breakthrough.webp"
                       alt="Wealth ceiling breakthrough icon"
                       loading="lazy"
-                    />Wealth Ceilings
+                    / width="500" height="500">Wealth Ceilings
                   </li>
                   <li>
-                    <img
-                      src="images/Work with me/icons/icon-transformation-abundance.webp"
+                    <img                       src="images/Work with me/icons/icon-transformation-abundance.webp"
                       alt="Transformation and abundance icon"
                       loading="lazy"
-                    />Strategy Alignment
+                    / width="102" height="108">Strategy Alignment
                   </li>
                 </ul>
                 <a class="wwm-action" href="./contact.html#send-message"
@@ -484,11 +489,10 @@
               <div class="wwm-card__content">
                 <div class="wwm-card__heading">
                   <span class="wwm-card__icon">
-                    <img
-                      src="images/Work with me/icons/icon-transformation-abundance.webp"
+                    <img                       src="images/Work with me/icons/icon-transformation-abundance.webp"
                       alt="Transformation and abundance icon"
                       loading="lazy"
-                    />
+                    / width="102" height="108">
                   </span>
                   <h2>Energy Work, Experiences<br />&amp; Sessions</h2>
                 </div>
@@ -501,35 +505,31 @@
                 <p>Subtle. Precise. Transformative.</p>
               </div>
               <div class="wwm-card__image">
-                <img
-                  src="images/Work with me/sarvesh-mopkar-energy-work-sound-healing-sessions.webp"
+                <img                   src="images/Work with me/sarvesh-mopkar-energy-work-sound-healing-sessions.webp"
                   alt="Crystal and sound bowl energy session"
                   loading="lazy"
                   decoding="async"
-                />
+                / width="1536" height="1024">
               </div>
               <aside class="wwm-card__aside">
                 <ul class="wwm-benefits">
                   <li>
-                    <img
-                      src="images/Work with me/icons/icon-sound-healing-energy-session.webp"
+                    <img                       src="images/Work with me/icons/icon-sound-healing-energy-session.webp"
                       alt="Sound healing icon"
                       loading="lazy"
-                    />Sound Healing
+                    / width="500" height="500">Sound Healing
                   </li>
                   <li>
-                    <img
-                      src="images/Work with me/icons/sarvesh-mopkar-philosophy-08.webp"
+                    <img                       src="images/Work with me/icons/sarvesh-mopkar-philosophy-08.webp"
                       alt="Kuber consciousness icon"
                       loading="lazy"
-                    />Energy Alignment
+                    / width="323" height="276">Energy Alignment
                   </li>
                   <li>
-                    <img
-                      src="images/Work with me/icons/icon-expansion-flow-consciousness.webp"
+                    <img                       src="images/Work with me/icons/icon-expansion-flow-consciousness.webp"
                       alt="Expansion and flow icon"
                       loading="lazy"
-                    />Consciousness Work
+                    / width="500" height="500">Consciousness Work
                   </li>
                 </ul>
                 <a
@@ -565,13 +565,12 @@
         <div class="container footer__grid">
           <div class="footer__brand">
             <a class="brand" href="#top">
-              <img
-                class="brand__mark"
+              <img                 class="brand__mark"
                 src="images/home/sarvesh-mopkar-logo.webp"
                 alt="Sarvesh M Logo"
                 loading="lazy"
                 decoding="async"
-              />
+              / width="200" height="174">
             </a>
             <p>Wealth. Consciousness. Alignment.</p>
             <div class="footer__socials" aria-label="Social links">

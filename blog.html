@@ -1,17 +1,40 @@
 <!doctype html>
 <html lang="en">
   <head>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://unpkg.com">
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Google Tag Manager -->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-TPM547S9');
-    </script>
-    <!-- End Google Tag Manager -->
+    <!-- Google Tag Manager (Delayed) -->
+<script>
+(function() {
+  function loadGTM() {
+    if (window._gtmLoaded) return;
+    window._gtmLoaded = true;
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TPM547S9');
+  }
+  // Load GTM after user interaction OR after 3s, whichever comes first
+  var loaded = false;
+  function onInteract() {
+    if (!loaded) { loaded = true; setTimeout(loadGTM, 0); }
+    document.removeEventListener('mousemove', onInteract);
+    document.removeEventListener('keydown', onInteract);
+    document.removeEventListener('touchstart', onInteract);
+    document.removeEventListener('scroll', onInteract);
+  }
+  document.addEventListener('mousemove', onInteract, {passive: true});
+  document.addEventListener('keydown', onInteract, {passive: true});
+  document.addEventListener('touchstart', onInteract, {passive: true});
+  document.addEventListener('scroll', onInteract, {passive: true});
+  setTimeout(loadGTM, 3000);
+})();
+</script>
+<!-- End Google Tag Manager (Delayed) -->
     <title>Insights | Sarvesh Mopkar</title>
     <meta
       name="description"
@@ -72,10 +95,13 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TPM547S9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <main>
-      <p>
+      <p class="reveal">
         Redirecting to
         <a href="https://sarveshmopkar.substack.com/">Sarvesh Mopkar on Substack</a>.
       </p>
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="scroll-animations.js"></script>
   </body>
 </html>
