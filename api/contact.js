@@ -1,4 +1,4 @@
-const TO_EMAIL = process.env.CONTACT_TO_EMAIL || "1.coach.sarvesh@gmail.com";
+const TO_EMAIL = process.env.CONTACT_TO_EMAIL || "coach@sarveshmopkar.co";
 const FROM_EMAIL =
   process.env.RESEND_FROM_EMAIL || "Sarvesh Mopkar Website <onboarding@resend.dev>";
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || "";
