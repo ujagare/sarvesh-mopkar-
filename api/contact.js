@@ -1,6 +1,5 @@
 const TO_EMAIL = "coach@sarveshmopkar.co";
-const FROM_EMAIL =
-  process.env.RESEND_FROM_EMAIL || "Sarvesh Mopkar Website <noreply@sarveshmopkar.co>";
+const FROM_EMAIL = "Sarvesh Mopkar Website <noreply@sarveshmopkar.co>";
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || "";
 function cleanEnv(value = "") {
   return String(value).trim().replace(/^['"]|['"]$/g, "");
@@ -436,28 +435,9 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  const autoReplyResponse = await sendResendEmail({
-    from: FROM_EMAIL,
-    to: [email],
-    reply_to: TO_EMAIL,
-    subject: "We received your message - Sarvesh Mopkar",
-    html: userHtml,
-    text: userText,
-  });
-
-  if (!autoReplyResponse.ok) {
-    const detail = await autoReplyResponse.text().catch(() => "");
-    console.error("Auto reply email failed:", detail);
-
-    return sendJson(res, 200, {
-      message:
-        "Your message has been sent. The confirmation email could not be delivered, but we received your enquiry.",
-      saved: savedToSupabase,
-    });
-  }
-
   return sendJson(res, 200, {
     message: "Thank you. Your message has been sent successfully.",
     saved: savedToSupabase,
+    emailed: true,
   });
 };
